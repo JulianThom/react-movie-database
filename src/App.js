@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Navigation from './components/Navigation'
 import Slideshow from './components/Slideshow'
+import Footer from './components/Footer'
 import './App.css'
 
 class App extends Component {
@@ -11,6 +12,7 @@ class App extends Component {
         <Navigation />
         <div className="wrapper">
           <Slideshow />
+          <Footer />
         </div>
       </div>
     )
