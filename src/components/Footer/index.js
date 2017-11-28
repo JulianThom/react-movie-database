@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './Footer.css';
-import logoTMDB from '../assets/logos/powered-by-rectangle-green.svg';
+import './index.css';
+import logoTMDB from '../../assets/logos/powered-by-rectangle-green.svg';
 
 class Footer extends Component {
   render() {
