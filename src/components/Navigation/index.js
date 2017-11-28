@@ -8,7 +8,7 @@ import { MenuItem,
          FormControl,
          Button }
          from 'react-bootstrap';
-import './Navigation.css';
+import './index.css';
 
 class Navigation extends Component {
   render() {

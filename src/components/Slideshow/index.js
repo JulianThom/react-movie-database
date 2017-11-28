@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Slider from 'react-slick';
-import './Slideshow.css';
+import './index.css';
 import axios from 'axios';
 
 class Slideshow extends Component {
