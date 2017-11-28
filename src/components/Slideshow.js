@@ -42,7 +42,7 @@ class Slideshow extends Component {
                   <div className="title">
                     <p>{value.title}</p>
                   </div>
-                  <img src={base_url+value.backdrop_path}/>
+                  <img src={base_url+value.backdrop_path} alt={value.title}/>
                 </div>
               )
             })
