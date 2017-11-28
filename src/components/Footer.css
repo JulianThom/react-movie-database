@@ -1,0 +1,12 @@
+.footer {
+  bottom: 0;
+  position: absolute;
+  background-color: var(--white);
+  width: 1000px;
+  border-top: 2px solid var(--gray);
+}
+
+.footer img {
+  width: 140px;
+  padding: 10px;
+}
