@@ -11,7 +11,7 @@ class App extends Component {
       <div>
         <Navigation />
         <div className="wrapper">
-          <Slideshow contentToDisplay={10} />
+          <Slideshow contentToDisplay={5} />
           <Footer />
         </div>
       </div>
