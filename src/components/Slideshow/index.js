@@ -9,15 +9,16 @@ const randomPage = Math.floor(Math.random() * 100);
 class Slideshow extends Component {
 
   state = {
-    data: []
+    data: [],
+    loading: true
   };
 
   componentDidMount() {
-    axios.get
-    (`https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&language=en-US&page=${randomPage}`)
+    axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&language=en-US&page=${randomPage}`)
     .then(response => {
       this.setState({
-        data: response.data.results
+        data: response.data.results,
+        loading: false
       })
     })
     .catch(function (error) {
@@ -33,20 +34,24 @@ class Slideshow extends Component {
     };
     return (
       <div>
-        <Slider {...settings}>
           {
-            this.state.data.slice(0, this.props.contentToDisplay).map(function(value, elem) {
-              return (
-                <div key={elem}>
-                  <div className="title">
-                    <p>{value.title}</p>
-                  </div>
-                  <img src={base_url_backdrop_w780+value.backdrop_path} alt={value.title}/>
-                </div>
-              )
-            })
+            this.state.loading ? <span className="loader fa fa-spinner fa-pulse fa-3x"></span>
+            :
+            <Slider {...settings}>
+              {
+                this.state.data.slice(0, this.props.contentToDisplay).map(function(value, elem) {
+                  return (
+                    <div key={elem}>
+                      <div className="title">
+                        <p>{value.title}</p>
+                      </div>
+                      <img src={base_url_backdrop_w780+value.backdrop_path} alt={value.title}/>
+                    </div>
+                  )
+                })
+              }
+            </Slider>
           }
-        </Slider>
       </div>
     );
   }
