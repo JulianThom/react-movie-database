@@ -4,11 +4,13 @@
 
 .slick-next {
   right: 10px;
+  text-shadow: 0 0 5px #00000096;
 }
 
 .slick-prev {
   left: 10px;
   z-index: 1;
+  text-shadow: 0 0 5px #00000096;
 }
 
 .title {
