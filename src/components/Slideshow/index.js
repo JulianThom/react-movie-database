@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import Slider from 'react-slick';
 import './index.css';
+import {api_key, base_url_backdrop_w780} from '../../helper/helper.js';
 import axios from 'axios';
+
+const randomPage = Math.floor(Math.random() * 100);
 
 class Slideshow extends Component {
 
@@ -11,7 +14,7 @@ class Slideshow extends Component {
 
   componentDidMount() {
     axios.get
-    ('https://api.themoviedb.org/3/movie/popular?api_key=a8ccc2c614a1931b007aa9a92c8afb41&language=en-US&page=1')
+    (`https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&language=en-US&page=${randomPage}`)
     .then(response => {
       this.setState({
         data: response.data.results
@@ -23,10 +26,6 @@ class Slideshow extends Component {
   }
 
   render() {
-    let base_url = 'http://image.tmdb.org/t/p/w1280/';
-
-    console.log(this.state.data)
-
     const settings = {
       slidesToShow: 2,
       dots: true,
@@ -36,13 +35,13 @@ class Slideshow extends Component {
       <div>
         <Slider {...settings}>
           {
-            this.state.data.slice(0, 5).map(function(value, elem) {
+            this.state.data.slice(0, this.props.contentToDisplay).map(function(value, elem) {
               return (
                 <div key={elem}>
                   <div className="title">
                     <p>{value.title}</p>
                   </div>
-                  <img src={base_url+value.backdrop_path} alt={value.title}/>
+                  <img src={base_url_backdrop_w780+value.backdrop_path} alt={value.title}/>
                 </div>
               )
             })
