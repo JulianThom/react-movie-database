@@ -27,3 +27,9 @@
   white-space: nowrap;
   overflow: hidden;
 }
+
+.loader {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+}
