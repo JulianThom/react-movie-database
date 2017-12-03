@@ -1,7 +1,7 @@
 .wrapper {
   width: 1000px;
   margin: auto;
-  height: calc(100vh - 52px);
   background-color: var(--white);
   margin-top: 52px;
+  min-height: 100vh;
 }
