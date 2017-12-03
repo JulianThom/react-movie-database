@@ -3,5 +3,5 @@
   margin: auto;
   background-color: var(--white);
   margin-top: 52px;
-  min-height: 100vh;
+  height: calc(100vh - (80px + 52px));
 }
