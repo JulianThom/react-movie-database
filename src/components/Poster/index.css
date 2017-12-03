@@ -1,0 +1,30 @@
+.rowPoster {
+  margin-bottom: 60px;
+}
+
+.containerPoster {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 20 1 auto;
+  flex-direction: row;
+}
+
+.poster {
+  width: 15%;
+  margin: 0.5%;
+  flex-grow: 1;
+  flex: 1 1 auto;
+}
+
+.poster img {
+  width: 100%;
+}
+
+.poster .info {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--black);
+  color: var(--mainColor);
+  background-color: black;
+  text-shadow: 0 0 15px var(--mainColor);
+}
