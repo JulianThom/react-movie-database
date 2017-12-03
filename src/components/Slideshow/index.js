@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Slider from 'react-slick';
 import './index.css';
-import {api_key, base_url_backdrop_w780} from '../../helper/helper.js';
+import {api_key, base_url_api, base_url_backdrop_w780} from '../../helper/helper.js';
 import axios from 'axios';
 
 const randomPage = Math.floor(Math.random() * 100);
@@ -14,7 +14,7 @@ class Slideshow extends Component {
   };
 
   componentDidMount() {
-    axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&language=en-US&page=${randomPage}`)
+    axios.get(`${base_url_api}movie/popular?api_key=${api_key}&language=en-US&page=${randomPage}`)
     .then(response => {
       this.setState({
         data: response.data.results,
