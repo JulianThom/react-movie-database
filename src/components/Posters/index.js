@@ -8,6 +8,7 @@ class Posters extends Component{
   state = {
     dataMovie: [],
     dataSerie: [],
+    dataPeople: [],
   };
 
   componentDidMount() {
@@ -34,6 +35,16 @@ class Posters extends Component{
     .catch(function (error) {
       console.log(error);
     });
+
+    axios.get(`${base_url_api}person/popular?api_key=${api_key}&language=en-US&page=1`)
+    .then(response => {
+      this.setState({
+        dataPeople: response.data.results,
+      })
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
   render () {
@@ -42,7 +53,8 @@ class Posters extends Component{
         <Poster
           dataMovie={this.state.dataMovie}
           dataSerie={this.state.dataSerie}
-          contentToDisplay={20}
+          dataPeople={this.state.dataPeople}
+          contentToDisplay={18}
           />
       </div>
     )
