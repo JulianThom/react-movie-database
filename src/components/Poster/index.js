@@ -5,7 +5,6 @@ import {base_url_poster_w342, base_url_profile_sizes_w185} from '../../helper/he
 class Poster extends Component{
 
   render () {
-    console.log(this.props.dataPeople);
     return (
       <div>
         <div className="rowPoster">

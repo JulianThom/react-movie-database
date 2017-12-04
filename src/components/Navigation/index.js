@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { MenuItem,
-         NavDropdown,
-         NavItem,
+import { NavItem,
          Nav,
          Navbar,
          FormGroup,
