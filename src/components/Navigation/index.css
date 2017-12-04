@@ -7,6 +7,8 @@
   box-shadow: 0px 1px 5px #0000002e;
 }
 
-.navbar button {
-  margin-left: 5px;
+@media screen and (min-width: 768px) {
+  .navbar button {
+    margin-left: 5px;
+  }
 }
