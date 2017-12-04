@@ -23,15 +23,15 @@
 }
 
 .title p{
-  color: white;
+  color: var(--mainColor);
   margin-left: 10px;
   background: #00000099;
   padding: 5px 10px;
-  text-shadow: 0px 0px 2px black;
   text-overflow: ellipsis;
   max-width: 200px;
   white-space: nowrap;
   overflow: hidden;
+  text-shadow: 0 0 5px #000000bf;
 }
 
 .loader {
