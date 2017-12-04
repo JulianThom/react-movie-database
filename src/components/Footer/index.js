@@ -6,7 +6,9 @@ class Footer extends Component {
   render() {
     return (
       <div className="footer">
-        <img className="pull-right" src={logoTMDB} alt="TMDB logo" />
+        <a href="https://www.themoviedb.org/" target="blank">
+          <img className="pull-right" src={logoTMDB} alt="TMDB logo" />
+        </a>
       </div>
     )
   }
