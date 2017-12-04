@@ -2,6 +2,10 @@
   margin-bottom: 60px;
 }
 
+.rowPoster:last-child {
+  margin-bottom: 0px;
+}
+
 .containerPoster {
   display: flex;
   flex-wrap: wrap;
