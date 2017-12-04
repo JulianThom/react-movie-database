@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './index.css';
-import {api_key, base_url_api, base_url_poster_w342} from '../../helper/helper.js';
+import {api_key, base_url_api} from '../../helper/helper.js';
 import Poster from '../Poster/'
 import axios from 'axios';
 
