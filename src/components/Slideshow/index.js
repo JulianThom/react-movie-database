@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Slider from 'react-slick';
 import './index.css';
+import PosterInfo from '../PosterInfo/';
 import {api_key, base_url_api, base_url_backdrop_w780} from '../../helper/helper.js';
 import axios from 'axios';
 
@@ -30,7 +31,7 @@ class Slideshow extends Component {
     const settings = {
       slidesToShow: 2,
       dots: true,
-      autoplay: true,
+      autoplay: false,
     };
     return (
       <div>
@@ -42,9 +43,7 @@ class Slideshow extends Component {
                 this.state.data.slice(0, this.props.contentToDisplay).map(function(value, elem) {
                   return (
                     <div key={elem}>
-                      <div className="title">
-                        <p>{value.title}</p>
-                      </div>
+                      <PosterInfo value={value.title}/>
                       <img src={base_url_backdrop_w780+value.backdrop_path} alt={value.title}/>
                     </div>
                   )

@@ -17,21 +17,10 @@
   text-shadow: 0 0 5px #00000096;
 }
 
-.title {
-  position: absolute;
-  bottom: 0%;
-}
-
-.title p{
-  color: var(--mainColor);
-  margin-left: 10px;
-  background: #00000099;
-  padding: 5px 10px;
-  text-overflow: ellipsis;
+.slick-slider .info {
+  width: auto;
   max-width: 200px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-shadow: 0 0 5px #000000bf;
+  margin: 10px;
 }
 
 .loader {
