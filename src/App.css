@@ -1,8 +1,12 @@
-.wrapper {
+.mainWrapper {
   width: 1000px;
   margin: auto;
   background-color: var(--white);
   margin-top: 52px;
   min-height: calc(100vh - (80px + 52px));
   max-height: calc(100% - (80px + 52px));
+}
+
+.wrapperRow {
+  padding: 30px;
 }
