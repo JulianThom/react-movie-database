@@ -50,7 +50,7 @@ class RowPosters extends Component{
 
   render () {
     return (
-      <div className="row">
+      <div className="rows">
         <RowTitle icon={this.props.icon} title={this.props.title}/>
         <div className="rowPoster">
           <div className="containerPoster">
