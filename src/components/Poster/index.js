@@ -8,7 +8,11 @@ class Poster extends Component{
     return (
       <div className="poster">
         <img src={this.props.posterURL} alt={this.props.value}/>
-        <PosterInfo icon={this.props.icon} value={this.props.value}/>
+        <PosterInfo
+          icon={this.props.icon}
+          value={this.props.value}
+          rating={this.props.rating}
+          />
       </div>
     )
   }

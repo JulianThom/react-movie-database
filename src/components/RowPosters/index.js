@@ -62,7 +62,9 @@ class RowPosters extends Component{
                     key={elem}
                     icon="star"
                     posterURL={base_url_poster_w342+value.poster_path}
-                    value={value.vote_average}
+                    rate={value.vote_average}
+                    rating={true}
+                    value={Math.round(value.vote_average)/2}
                   />
                 )
               })
@@ -75,7 +77,8 @@ class RowPosters extends Component{
                     key={elem}
                     icon="star"
                     posterURL={base_url_poster_w342+value.poster_path}
-                    value={value.vote_average}
+                    rating={true}
+                    value={Math.round(value.vote_average)/2}
                   />
                 )
               })
@@ -88,6 +91,7 @@ class RowPosters extends Component{
                     key={elem}
                     posterURL={base_url_profile_sizes_w185+value.profile_path}
                     value={value.name}
+                    rating={false}
                   />
                 )
               })
