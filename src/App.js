@@ -1,41 +1,48 @@
 import React, { Component } from 'react';
+
 import Navigation from './components/Navigation/'
-import Slideshow from './components/Slideshow/'
-import RowPosters from './components/RowPosters/'
 import Footer from './components/Footer/'
+
+import HomePage from './components/pages/Home/'
+import MoviesPage from './components/pages/Movies/'
+import SeriesPage from './components/pages/Series/'
+import ActorsPage from './components/pages/Actors/'
+
 import './App.css'
+
+import {
+  BrowserRouter as Router,
+  Route
+} from 'react-router-dom';
 
 class App extends Component {
 
   render () {
     return (
-      <div>
-        <Navigation />
-        <div className="mainWrapper">
-          <Slideshow contentToDisplay={5} />
-          <div className="wrapperRow">
-            <RowPosters
-              icon="ticket"
-              title="Best movies of 2017"
-              contentToDisplay={18}
-              type="movie"
-            />
-            <RowPosters
-              icon="television"
-              title="Best series of 2017"
-              contentToDisplay={18}
-              type="serie"
-            />
-            <RowPosters
-              icon="user"
-              title="Most popular actors"
-              contentToDisplay={18}
-              type="actor"
-            />
-          </div>
+      <Router>
+        <div>
+          <Navigation />
+            <div className="mainWrapper">
+              <Route
+                exact path="/"
+                component={HomePage}
+              />
+              <Route
+                path="/movies"
+                component={MoviesPage}
+              />
+              <Route
+                path="/series"
+                component={SeriesPage}
+              />
+              <Route
+                path="/actors"
+                component={ActorsPage}
+              />
+            </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
+      </Router>
     )
   }
 }

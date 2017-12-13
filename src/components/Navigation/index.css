@@ -7,8 +7,49 @@
   box-shadow: 0px 1px 5px #0000002e;
 }
 
-@media screen and (min-width: 768px) {
+.navbar a {
+  color: var(--grayBootstrap);
+  text-decoration: none;
+}
+
+.navbar a:hover {
+    color: var(--mainColor);
+    text-decoration: none;
+}
+
+.navList {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.navList li {
+  float: left;
+}
+.navList a {
+  display: block;
+  padding: 15px;
+  float: left;
+}
+.navbar button {
+  margin-left: 5px;
+}
+
+.navbar-form {
+  border: none;
+}
+
+@media screen and (max-width: 768px) {
+  .navList a:first-child {
+    display: block;
+    padding: 15px 15px 15px 0;
+    float: left;
+  }
+  .navList a {
+    display: block;
+    padding: 15px;
+    float: left;
+  }
   .navbar button {
-    margin-left: 5px;
+    margin-left: 0;
   }
 }
