@@ -4,7 +4,7 @@ import { Navbar,
          FormControl,
          Button }
          from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './index.css';
 
 class Navigation extends Component {
@@ -14,7 +14,7 @@ class Navigation extends Component {
         <Navbar>
           <Navbar.Header>
             <Navbar.Brand>
-              <Link to="/">
+              <Link exact to="/">
                 RMDB
               </Link>
             </Navbar.Brand>
@@ -23,19 +23,19 @@ class Navigation extends Component {
           <Navbar.Collapse>
             <ul className="navList">
               <li>
-                <Link to="/movies">
+                <NavLink activeClassName="active" to="/movies">
                   <i className="fa fa-ticket"></i> Movies
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link to="/series">
+                <NavLink activeClassName="active" to="/series">
                     <i className="fa fa-television"></i> Series
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link to="/actors">
+                <NavLink activeClassName="active" to="/actors">
                   <i className="fa fa-user"></i> Actors
-                </Link>
+                </NavLink>
               </li>
             </ul>
             <Navbar.Form pullRight>
