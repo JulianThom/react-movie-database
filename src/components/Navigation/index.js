@@ -14,7 +14,9 @@ class Navigation extends Component {
         <Navbar>
           <Navbar.Header>
             <Navbar.Brand>
-              <Link exact to="/">
+              <Link
+                to="/"
+              >
                 RMDB
               </Link>
             </Navbar.Brand>
@@ -23,17 +25,26 @@ class Navigation extends Component {
           <Navbar.Collapse>
             <ul className="navList">
               <li>
-                <NavLink activeClassName="active" to="/movies">
+                <NavLink
+                  activeClassName="active"
+                  to="/movies"
+                >
                   <i className="fa fa-ticket"></i> Movies
                 </NavLink>
               </li>
               <li>
-                <NavLink activeClassName="active" to="/series">
-                    <i className="fa fa-television"></i> Series
+                <NavLink
+                  activeClassName="active"
+                  to="/series"
+                >
+                  <i className="fa fa-television"></i> Series
                 </NavLink>
               </li>
               <li>
-                <NavLink activeClassName="active" to="/actors">
+                <NavLink
+                  activeClassName="active"
+                  to="/actors"
+                >
                   <i className="fa fa-user"></i> Actors
                 </NavLink>
               </li>
