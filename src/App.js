@@ -7,6 +7,7 @@ import HomePage from './components/pages/Home/'
 import MoviesPage from './components/pages/Movies/'
 import SeriesPage from './components/pages/Series/'
 import ActorsPage from './components/pages/Actors/'
+import DetailViewPage from './components/pages/DetailView/'
 
 import './App.css'
 
@@ -38,6 +39,10 @@ class App extends Component {
               <Route
                 path="/actors"
                 component={ActorsPage}
+              />
+              <Route
+                path="/detailView/:id"
+                component={DetailViewPage}
               />
             </div>
           <Footer />
