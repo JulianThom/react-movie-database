@@ -65,6 +65,7 @@ class RowPosters extends Component{
                     rate={value.vote_average}
                     rating={true}
                     value={Math.round(value.vote_average)/2}
+                    id={value.id}
                   />
                 )
               })
@@ -79,6 +80,7 @@ class RowPosters extends Component{
                     posterURL={base_url_poster_w342+value.poster_path}
                     rating={true}
                     value={Math.round(value.vote_average)/2}
+                    id={value.id}
                   />
                 )
               })
@@ -92,6 +94,7 @@ class RowPosters extends Component{
                     posterURL={base_url_profile_sizes_w185+value.profile_path}
                     value={value.name}
                     rating={false}
+                    id={value.id}
                   />
                 )
               })
