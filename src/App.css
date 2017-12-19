@@ -6,7 +6,7 @@ body {
 }
 
 .mainWrapper {
-  width: 1000px;
+  width: var(--wrapperWidth);
   margin: auto;
   background-color: var(--white);
   margin-top: 52px;
