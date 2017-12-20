@@ -29,9 +29,12 @@ class Slideshow extends Component {
 
   render() {
     const settings = {
-      slidesToShow: 2,
+      centerPadding: '200px',
+      slidesToShow: 1,
       dots: true,
+      infinite: true,
       autoplay: false,
+      centerMode: true
     };
     return (
       <div>
