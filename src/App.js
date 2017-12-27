@@ -23,28 +23,26 @@ class App extends Component {
       <Router>
         <div>
           <Navigation />
-            <div className="mainWrapper">
-              <Route
-                exact path="/"
-                component={HomePage}
-              />
-              <Route
-                path="/movies"
-                component={MoviesPage}
-              />
-              <Route
-                path="/series"
-                component={SeriesPage}
-              />
-              <Route
-                path="/actors"
-                component={ActorsPage}
-              />
-              <Route
-                path="/detailView/:id"
-                component={DetailViewPage}
-              />
-            </div>
+            <Route
+              exact path="/"
+              component={HomePage}
+            />
+            <Route
+              path="/movies"
+              component={MoviesPage}
+            />
+            <Route
+              path="/series"
+              component={SeriesPage}
+            />
+            <Route
+              path="/actors"
+              component={ActorsPage}
+            />
+            <Route
+              path="/detailView/:cat/:id"
+              component={DetailViewPage}
+            />
           <Footer />
         </div>
       </Router>
