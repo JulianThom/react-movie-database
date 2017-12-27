@@ -12,12 +12,12 @@ class DetailView extends Component{
     data: [],
     similar: [],
     routeID: this.props.match.params.id,
-    cat: this.props.match.params.cat,
+    routeCat: this.props.match.params.cat,
   };
 
   componentDidMount() {
     axios.get(`
-        ${base_url_api}${this.state.cat}/${this.state.routeID}
+        ${base_url_api}${this.state.routeCat}/${this.state.routeID}
         ?api_key=${api_key}&language=en-US&append_to_response=videos
       `)
     .then(response => {
@@ -30,7 +30,7 @@ class DetailView extends Component{
     });
 
     axios.get(`
-        ${base_url_api}${this.state.cat}/${this.state.routeID}
+        ${base_url_api}${this.state.routeCat}/${this.state.routeID}
         /similar?api_key=${api_key}&language=en-US&page=1
       `)
     .then(response => {
