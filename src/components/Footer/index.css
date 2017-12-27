@@ -1,13 +1,13 @@
 .footer {
   bottom: 0;
-  height: 86px;
+  height: var(--headerFooterHeight);
   background-color: #f8f8f8;
-  width: var(--wrapperWidth);
+  width: 100%;
   border-top: 2px solid #e7e7e7;
-  padding: 15px;
+  padding: 5px;
   margin: auto;
 }
 
 .footer img {
-  width: 140px;
+  height: 100%;
 }
