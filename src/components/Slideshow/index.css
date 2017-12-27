@@ -1,5 +1,8 @@
 .slick-slider {
   margin-bottom: 10px;
+  width: 1000px;
+  margin: auto;
+  margin-top: var(--headerFooterHeight);
 }
 
 .slick-slide img {
