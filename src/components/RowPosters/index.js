@@ -66,6 +66,7 @@ class RowPosters extends Component{
                     rating={true}
                     value={Math.round(value.vote_average)/2}
                     id={value.id}
+                    cat="movie"
                   />
                 )
               })
@@ -81,6 +82,7 @@ class RowPosters extends Component{
                     rating={true}
                     value={Math.round(value.vote_average)/2}
                     id={value.id}
+                    cat="tv"
                   />
                 )
               })
@@ -95,6 +97,7 @@ class RowPosters extends Component{
                     value={value.name}
                     rating={false}
                     id={value.id}
+                    cat="person"
                   />
                 )
               })
