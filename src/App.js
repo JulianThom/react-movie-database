@@ -4,12 +4,13 @@ import Navigation from './components/Navigation/'
 import Footer from './components/Footer/'
 
 import HomePage from './components/pages/Home/'
-import MoviesPage from './components/pages/Movies/'
-import SeriesPage from './components/pages/Series/'
-import ActorsPage from './components/pages/Actors/'
+import MoviePage from './components/pages/Movie/'
+import TvPage from './components/pages/Tv/'
+import PersonPage from './components/pages/Person/'
 import DetailViewPage from './components/pages/DetailView/'
 
 import './App.css'
+import config from './config'
 
 import {
   BrowserRouter as Router,
@@ -28,16 +29,16 @@ class App extends Component {
               component={HomePage}
             />
             <Route
-              path="/movies"
-              component={MoviesPage}
+              path={`/${config.categories.movie}`}
+              component={MoviePage}
             />
             <Route
-              path="/series"
-              component={SeriesPage}
+              path={`/${config.categories.tv}`}
+              component={TvPage}
             />
             <Route
-              path="/actors"
-              component={ActorsPage}
+              path={`/${config.categories.person}`}
+              component={PersonPage}
             />
             <Route
               path="/detailView/:cat/:id"
