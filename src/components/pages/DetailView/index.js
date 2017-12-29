@@ -120,7 +120,7 @@ class DetailView extends Component{
               icon="user"
               title="Cast"
               contentToDisplay={6}
-              type="actor"
+              type={config.categories.person}
               data={this.state.cast}
             />
             <RowPosters
