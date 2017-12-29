@@ -3,6 +3,7 @@ import Slider from 'react-slick';
 import './index.css';
 import PosterInfo from '../PosterInfo/';
 import config from '../../config'
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const {
@@ -20,7 +21,8 @@ class Slideshow extends Component {
 
   state = {
     data: [],
-    loading: true
+    loading: true,
+    currentSlide: 0
   };
 
   componentDidMount() {
@@ -37,14 +39,25 @@ class Slideshow extends Component {
   }
 
   render() {
+
     const settings = {
       centerPadding: '200px',
       slidesToShow: 1,
       dots: true,
       infinite: true,
-      autoplay: false,
-      centerMode: true
-    };
+      autoplay: true,
+      centerMode: true,
+      afterChange: function (currentSlide) {
+        this.setState({
+          currentSlide: currentSlide,
+        })
+      }.bind(this)
+   };
+
+   const {
+     cat
+   } = this.props;
+
     return (
       <div>
           {
@@ -52,13 +65,24 @@ class Slideshow extends Component {
             :
             <Slider {...settings}>
               {
-                this.state.data.slice(0, this.props.contentToDisplay).map(function(value, elem) {
-                  return (
-                    <div key={elem}>
-                      <PosterInfo value={value.title}/>
-                      <img src={`${baseUrlBackdropW780}${value.backdrop_path}`} alt={value.title}/>
-                    </div>
-                  )
+                this.state.data.map ((value, elem) =>  {
+                  if ( elem < this.props.contentToDisplay) {
+                    return (
+                      <Link
+                        key={elem}
+                        to={`/detailView/${cat}/${value.id}`}
+                      >
+                        <div>
+                          {
+                            (elem === this.state.currentSlide)
+                            ? <PosterInfo value={value.title}/>
+                            : ""
+                          }
+                          <img src={`${baseUrlBackdropW780}${value.backdrop_path}`} alt={value.title}/>
+                        </div>
+                      </Link>
+                    )
+                  }
                 })
               }
             </Slider>
