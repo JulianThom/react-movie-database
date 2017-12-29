@@ -6,9 +6,8 @@ class DetailViewLayout extends Component {
   render ()
     {
       const backgroundStyle = {
-        'position': 'relative',
         'width': '100%',
-        'height': 'calc(100vh - var(--headerFooterHeight))',
+        'min-height': 'calc(100vh - var(--headerFooterHeight))',
         'backgroundSize': 'cover',
         'backgroundImage': `${this.props.backgroundImage}`,
       }

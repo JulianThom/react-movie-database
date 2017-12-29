@@ -1,6 +1,5 @@
 .layer {
   background: linear-gradient(to bottom, rgba(0,0,0,0) -50%,rgba(0,0,0,1) 90%);
-  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -10,7 +9,7 @@
 .containerDetailView {
   background-color: #00000000;
   width: 1000px;
-  height: calc(100vh - var(--headerFooterHeight));
+  min-height: calc(100vh - var(--headerFooterHeight));
   opacity: 1;
   margin: auto;
   padding: 100px 30px 30px;
