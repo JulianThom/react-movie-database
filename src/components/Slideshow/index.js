@@ -47,11 +47,11 @@ class Slideshow extends Component {
       infinite: true,
       autoplay: true,
       centerMode: true,
-      afterChange: function (currentSlide) {
+      afterChange: (currentSlide) => {
         this.setState({
           currentSlide: currentSlide,
         })
-      }.bind(this)
+      }
    };
 
    const {
