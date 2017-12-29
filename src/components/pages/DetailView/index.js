@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './index.css';
 
-import {api_key, base_url_api, base_url_poster_w342, base_url_backdrop_w1280} from '../../../helper/helper.js';
+import config from '../../../config.js'
 import DetailViewLayout from '../../../components/layouts/DetailViewLayout/';
 import RowPosters from '../../../components/RowPosters/'
 
@@ -26,8 +26,8 @@ class DetailView extends Component{
 
   componentDidMount() {
     axios.get(`
-        ${base_url_api}${this.state.routeCat}/${this.state.routeID}
-        ?api_key=${api_key}&language=en-US&append_to_response=videos
+        ${config.tmdb.baseUrlApi}${this.state.routeCat}/${this.state.routeID}
+        ?api_key=${config.tmdb.apiKey}&language=en-US&append_to_response=videos
       `)
     .then(response => {
       this.setState({
@@ -39,8 +39,8 @@ class DetailView extends Component{
     });
 
     axios.get(`
-        ${base_url_api}${this.state.routeCat}/${this.state.routeID}
-        /similar?api_key=${api_key}&language=en-US&page=1
+        ${config.tmdb.baseUrlApi}${this.state.routeCat}/${this.state.routeID}
+        /similar?api_key=${config.tmdb.apiKey}&language=en-US&page=1
       `)
     .then(response => {
       this.setState({
@@ -52,8 +52,8 @@ class DetailView extends Component{
     });
 
     axios.get(`
-      ${base_url_api}${this.state.routeCat}/${this.state.routeID}
-      /credits?api_key=${api_key}
+      ${config.tmdb.baseUrlApi}${this.state.routeCat}/${this.state.routeID}
+      /credits?api_key=${config.tmdb.apiKey}
       `)
     .then(response => {
       this.setState({
@@ -74,10 +74,10 @@ class DetailView extends Component{
     return (
       <div>
         <DetailViewLayout
-          backgroundImage={`url(${base_url_backdrop_w1280}${this.state.data.backdrop_path})`}>
+          backgroundImage={`url(${config.tmdb.assets.baseUrlBackdropW1280}${this.state.data.backdrop_path})`}>
           <div className="poster">
             <img
-              src={`${base_url_poster_w342}${this.state.data.poster_path}`}
+              src={`${config.tmdb.assets.baseUrlPosterW342}${this.state.data.poster_path}`}
               alt={this.state.data.title}
               />
           </div>
