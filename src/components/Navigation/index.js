@@ -6,6 +6,7 @@ import { Navbar,
          from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
 import './index.css';
+import config from '../../config.js'
 
 class Navigation extends Component {
   render() {
@@ -27,7 +28,7 @@ class Navigation extends Component {
               <li>
                 <NavLink
                   activeClassName="active"
-                  to="/movies"
+                  to={`/${config.categories.movie}`}
                 >
                   <i className="fa fa-ticket"></i> Movies
                 </NavLink>
@@ -35,7 +36,7 @@ class Navigation extends Component {
               <li>
                 <NavLink
                   activeClassName="active"
-                  to="/series"
+                  to={`/${config.categories.tv}`}
                 >
                   <i className="fa fa-television"></i> Series
                 </NavLink>
@@ -43,7 +44,7 @@ class Navigation extends Component {
               <li>
                 <NavLink
                   activeClassName="active"
-                  to="/actors"
+                  to={`/${config.categories.person}`}
                 >
                   <i className="fa fa-user"></i> Actors
                 </NavLink>

@@ -3,7 +3,7 @@ import './index.css';
 
 import RowPosters from '../../../components/RowPosters/'
 import MainLayout from '../../../components/layouts/MainLayout/'
-import {api_key, base_url_api} from '../../../helper/helper.js';
+
 import axios from 'axios';
 import config from '../../../config'
 
@@ -11,13 +11,13 @@ class Home extends Component{
 
   state = {
     dataMovie: [],
-    dataSerie: [],
-    dataPeople: [],
+    dataTV: [],
+    dataPerson: [],
   };
 
   componentDidMount() {
     console.log(config)
-    axios.get(`${base_url_api}discover/movie?api_key=${api_key}&language=en-US
+    axios.get(`${config.tmdb.baseUrlApi}discover/movie?api_key=${config.tmdb.apiKey}&language=en-US
                 &sort_by=vote_average.desc&include_adult=false&include_video=false&page=1
                 &primary_release_year=2017&vote_count.gte=1000`)
     .then(response => {
@@ -29,22 +29,22 @@ class Home extends Component{
       console.log(error);
     });
 
-    axios.get(`${base_url_api}discover/tv?api_key=${api_key}&language=en-US
+    axios.get(`${config.tmdb.baseUrlApi}discover/tv?api_key=${config.tmdb.apiKey}&language=en-US
       &sort_by=vote_average.desc&first_air_date_year=2017&page=1&timezone=America
       %2FNew_York&vote_count.gte=50&include_null_first_air_dates=false`)
     .then(response => {
       this.setState({
-        dataSerie: response.data.results,
+        dataTV: response.data.results,
       })
     })
     .catch(function (error) {
       console.log(error);
     });
 
-    axios.get(`${base_url_api}person/popular?api_key=${api_key}&language=en-US&page=1`)
+    axios.get(`${config.tmdb.baseUrlApi}person/popular?api_key=${config.tmdb.apiKey}&language=en-US&page=1`)
     .then(response => {
       this.setState({
-        dataPeople: response.data.results,
+        dataPerson: response.data.results,
       })
     })
     .catch(function (error) {
@@ -61,22 +61,22 @@ class Home extends Component{
               icon="ticket"
               title="Best movies of 2017"
               contentToDisplay={18}
-              type="movie"
+              type={config.categories.movie}
               data={this.state.dataMovie}
             />
             <RowPosters
               icon="television"
               title="Best series of 2017"
               contentToDisplay={18}
-              type="tv"
-              data={this.state.dataSerie}
+              type={config.categories.tv}
+              data={this.state.dataTV}
             />
             <RowPosters
               icon="user"
               title="Most popular actors"
               contentToDisplay={18}
-              type="actor"
-              data={this.state.dataPeople}
+              type={config.categories.person}
+              data={this.state.dataPerson}
             />
           </div>
         </MainLayout>

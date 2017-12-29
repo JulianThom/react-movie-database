@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import './index.css';
 
-class Series extends Component{
+class Movie extends Component{
 
   render () {
     return (
       <div>
-        Series Page!
+        Movies Page!
       </div>
     )
   }
 }
 
-export default Series;
+export default Movie;
