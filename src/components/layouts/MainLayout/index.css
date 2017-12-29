@@ -1,0 +1,11 @@
+.wrapperMain {
+  background-color: var(--gray);
+}
+
+.containerMain {
+  width: var(--wrapperWidth);
+  margin: auto;
+  background-color: var(--white);
+  min-height: calc(100vh - var(--headerFooterHeight));
+  padding: 30px;
+}

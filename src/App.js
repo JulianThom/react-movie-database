@@ -7,6 +7,7 @@ import HomePage from './components/pages/Home/'
 import MoviesPage from './components/pages/Movies/'
 import SeriesPage from './components/pages/Series/'
 import ActorsPage from './components/pages/Actors/'
+import DetailViewPage from './components/pages/DetailView/'
 
 import './App.css'
 
@@ -22,24 +23,26 @@ class App extends Component {
       <Router>
         <div>
           <Navigation />
-            <div className="mainWrapper">
-              <Route
-                exact path="/"
-                component={HomePage}
-              />
-              <Route
-                path="/movies"
-                component={MoviesPage}
-              />
-              <Route
-                path="/series"
-                component={SeriesPage}
-              />
-              <Route
-                path="/actors"
-                component={ActorsPage}
-              />
-            </div>
+            <Route
+              exact path="/"
+              component={HomePage}
+            />
+            <Route
+              path="/movies"
+              component={MoviesPage}
+            />
+            <Route
+              path="/series"
+              component={SeriesPage}
+            />
+            <Route
+              path="/actors"
+              component={ActorsPage}
+            />
+            <Route
+              path="/detailView/:cat/:id"
+              component={DetailViewPage}
+            />
           <Footer />
         </div>
       </Router>

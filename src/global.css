@@ -1,7 +1,14 @@
 :root {
+
   --white: white;
   --gray: #dadada;
   --mainColor: #00D8FF;
   --black: black;
   --grayBootstrap: #777;
+
+  --wrapperWidth: 1000px;
+  --headerFooterHeight: 52px;
+
+  --textShadow: 2px 2px 5px #000000ad;
+
 }

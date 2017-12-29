@@ -1,5 +1,5 @@
 .rows {
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 }
 
 .rows:last-child {
@@ -17,4 +17,8 @@
   flex-grow: 1;
   flex: 1 1 auto;
   position: relative;
+}
+
+.wrapperRow {
+  display: inline-block;
 }

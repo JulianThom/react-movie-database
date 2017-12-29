@@ -17,6 +17,11 @@
     text-decoration: none;
 }
 
+.navbar .active {
+    color: var(--mainColor);
+    text-decoration: none;
+}
+
 .navList {
     list-style-type: none;
     margin: 0;
@@ -48,6 +53,10 @@
     display: block;
     padding: 15px;
     float: left;
+  }
+  .navbar-collapse .navList .active {
+      color: var(--mainColor);
+      text-decoration: none;
   }
   .navbar button {
     margin-left: 0;
