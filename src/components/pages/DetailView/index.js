@@ -3,6 +3,8 @@ import './index.css';
 
 import {api_key, base_url_api, base_url_poster_w342, base_url_backdrop_w1280} from '../../../helper/helper.js';
 import DetailViewLayout from '../../../components/layouts/DetailViewLayout/';
+import RowPosters from '../../../components/RowPosters/'
+
 import axios from 'axios';
 var Rating = require('react-rating');
 
@@ -11,9 +13,16 @@ class DetailView extends Component{
   state = {
     data: [],
     similar: [],
+    cast: [],
     routeID: this.props.match.params.id,
     routeCat: this.props.match.params.cat,
   };
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.match.params.id !== nextProps.match.params.id) {
+      // request pour mettre  a jour les data
+    }
+  }
 
   componentDidMount() {
     axios.get(`
@@ -41,10 +50,25 @@ class DetailView extends Component{
     .catch(function (error) {
       console.log(error);
     });
+
+    axios.get(`
+      ${base_url_api}${this.state.routeCat}/${this.state.routeID}
+      /credits?api_key=${api_key}
+      `)
+    .then(response => {
+      this.setState({
+        cast: response.data.cast,
+      })
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
   render () {
     console.log(this.state.data);
+    console.log(this.state.cast);
+    console.log(this.state.similar);
     const genres = this.state.data.genres
 
     return (
@@ -70,11 +94,14 @@ class DetailView extends Component{
               />
             <div className="secondaryInfo">
               <p>
-                Release on {this.state.data.release_date}
+                Released on {this.state.data.release_date}
+              </p>
+              <p>
+                Duration: {this.state.data.runtime} min.
               </p>
               <ul className="genres">
                 {
-                  genres && genres.slice(0, 1).map(function(value, elem) {
+                  genres && genres.slice(0, 4).map(function(value, elem) {
                     return (
                       <li key={elem}>{value.name}</li>
                     )
@@ -82,11 +109,27 @@ class DetailView extends Component{
                 }
               </ul>
             </div>
-            <div className="overview">
-              <p>
-                {this.state.data.overview}
-              </p>
-            </div>
+          </div>
+          <div className="overview">
+            <p>
+              {this.state.data.overview}
+            </p>
+          </div>
+          <div className="wrapperRow">
+            <RowPosters
+              icon="user"
+              title="Cast"
+              contentToDisplay={6}
+              type="actor"
+              data={this.state.cast}
+            />
+            <RowPosters
+              icon="chain"
+              title="Similars"
+              contentToDisplay={6}
+              type={this.state.routeCat}
+              data={this.state.similar}
+            />
           </div>
         </DetailViewLayout>
       </div>
