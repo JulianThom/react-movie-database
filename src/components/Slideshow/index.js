@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Slider from 'react-slick';
 import './index.css';
 import PosterInfo from '../PosterInfo/';
-import {api_key, base_url_api, base_url_backdrop_w780} from '../../helper/helper.js';
+import config from '../../config'
 import axios from 'axios';
 
 const randomPage = Math.floor(Math.random() * 100);
@@ -15,7 +15,7 @@ class Slideshow extends Component {
   };
 
   componentDidMount() {
-    axios.get(`${base_url_api}movie/popular?api_key=${api_key}&language=en-US&page=${randomPage}`)
+    axios.get(`${config.tmdb.baseUrlApi}movie/popular?api_key=${config.tmdb.apiKey}&language=en-US&page=${randomPage}`)
     .then(response => {
       this.setState({
         data: response.data.results,
@@ -47,7 +47,7 @@ class Slideshow extends Component {
                   return (
                     <div key={elem}>
                       <PosterInfo value={value.title}/>
-                      <img src={base_url_backdrop_w780+value.backdrop_path} alt={value.title}/>
+                      <img src={`${config.tmdb.assets.baseUrlBackdropW780}${value.backdrop_path}`} alt={value.title}/>
                     </div>
                   )
                 })

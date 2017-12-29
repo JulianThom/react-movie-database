@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './index.css';
-import {base_url_poster_w342, base_url_profile_sizes_w185} from '../../helper/helper.js';
+
+import config from '../../config'
 import Poster from '../Poster/'
 import RowTitle from '../RowTitle/'
 
@@ -13,13 +14,13 @@ class RowPosters extends Component{
         <div className="rowPoster">
           <div className="containerPoster">
             {
-              this.props.type === 'movie' &&
+              this.props.type === `${config.categories.movie}` &&
               this.props.data.slice(0, this.props.contentToDisplay).map(function(value, elem) {
                 return (
                   <Poster
                     key={elem}
                     icon="star"
-                    posterURL={base_url_poster_w342+value.poster_path}
+                    posterURL={`${config.tmdb.assets.baseUrlPosterW342}${value.poster_path}`}
                     rate={value.vote_average}
                     rating={true}
                     value={Math.round(value.vote_average)/2}
@@ -30,13 +31,13 @@ class RowPosters extends Component{
               })
             }
             {
-              this.props.type === 'tv' &&
+              this.props.type === `${config.categories.tv}` &&
               this.props.data.slice(0, this.props.contentToDisplay).map(function(value, elem) {
                 return (
                   <Poster
                     key={elem}
                     icon="star"
-                    posterURL={base_url_poster_w342+value.poster_path}
+                    posterURL={`${config.tmdb.assets.baseUrlPosterW342}${value.poster_path}`}
                     rating={true}
                     value={Math.round(value.vote_average)/2}
                     id={value.id}
@@ -46,12 +47,12 @@ class RowPosters extends Component{
               })
             }
             {
-              this.props.type === 'actor' &&
+              this.props.type === `${config.categories.person}` &&
               this.props.data.slice(0, this.props.contentToDisplay).map(function(value, elem) {
                 return (
                   <Poster
                     key={elem}
-                    posterURL={base_url_profile_sizes_w185+value.profile_path}
+                    posterURL={`${config.tmdb.assets.baseUrlProfileW185}${value.profile_path}`}
                     value={value.name}
                     rating={false}
                     id={value.id}
