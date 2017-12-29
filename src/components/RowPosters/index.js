@@ -8,55 +8,75 @@ import RowTitle from '../RowTitle/'
 class RowPosters extends Component{
 
   render () {
+
+    const {
+      movie,
+      tv,
+      person
+    } = config.categories;
+
+    const {
+      baseUrlPosterW342,
+      baseUrlProfileW185
+    } = config.tmdb.assets;
+
+    const {
+      icon,
+      title,
+      contentToDisplay,
+      type,
+      data
+    } = this.props;
+
     return (
       <div className="rows">
-        <RowTitle icon={this.props.icon} title={this.props.title}/>
+        <RowTitle icon={icon} title={title}/>
         <div className="rowPoster">
           <div className="containerPoster">
             {
-              this.props.type === `${config.categories.movie}` &&
-              this.props.data.slice(0, this.props.contentToDisplay).map(function(value, elem) {
+              type === `${movie}` &&
+              data.slice(0, contentToDisplay).map(function(value, elem) {
                 return (
                   <Poster
                     key={elem}
                     icon="star"
-                    posterURL={`${config.tmdb.assets.baseUrlPosterW342}${value.poster_path}`}
+                    posterURL={`${baseUrlPosterW342}${value.poster_path}`}
                     rate={value.vote_average}
                     rating={true}
                     value={Math.round(value.vote_average)/2}
                     id={value.id}
-                    cat={config.categories.movie}
+                    cat={movie}
                   />
                 )
               })
             }
             {
-              this.props.type === `${config.categories.tv}` &&
-              this.props.data.slice(0, this.props.contentToDisplay).map(function(value, elem) {
+              this.props.type === `${tv}` &&
+              this.props.data.slice(0, contentToDisplay).map(function(value, elem) {
                 return (
                   <Poster
                     key={elem}
                     icon="star"
-                    posterURL={`${config.tmdb.assets.baseUrlPosterW342}${value.poster_path}`}
+                    posterURL={`${baseUrlPosterW342}${value.poster_path}`}
                     rating={true}
                     value={Math.round(value.vote_average)/2}
                     id={value.id}
-                    cat={config.categories.tv}
+                    cat={tv}
                   />
                 )
               })
             }
             {
-              this.props.type === `${config.categories.person}` &&
-              this.props.data.slice(0, this.props.contentToDisplay).map(function(value, elem) {
+              this.props.type === `${person}` &&
+              this.props.data.slice(0, contentToDisplay).map(function(value, elem) {
                 return (
                   <Poster
                     key={elem}
-                    posterURL={`${config.tmdb.assets.baseUrlProfileW185}${value.profile_path}`}
+                    posterURL={`${baseUrlProfileW185}${value.profile_path}`}
                     value={value.name}
                     rating={false}
                     id={value.id}
-                    cat={config.categories.person}
+                    cat={person}
                   />
                 )
               })

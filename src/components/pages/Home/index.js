@@ -7,6 +7,16 @@ import MainLayout from '../../../components/layouts/MainLayout/'
 import axios from 'axios';
 import config from '../../../config'
 
+const {
+  baseUrlApi,
+  apiKey
+} = config.tmdb;
+
+const {
+  baseUrlBackdropW1280,
+  baseUrlPosterW342
+} = config.tmdb.assets;
+
 class Home extends Component{
 
   state = {
@@ -17,7 +27,7 @@ class Home extends Component{
 
   componentDidMount() {
     console.log(config)
-    axios.get(`${config.tmdb.baseUrlApi}discover/movie?api_key=${config.tmdb.apiKey}&language=en-US
+    axios.get(`${baseUrlApi}discover/movie?api_key=${apiKey}&language=en-US
                 &sort_by=vote_average.desc&include_adult=false&include_video=false&page=1
                 &primary_release_year=2017&vote_count.gte=1000`)
     .then(response => {
@@ -29,7 +39,7 @@ class Home extends Component{
       console.log(error);
     });
 
-    axios.get(`${config.tmdb.baseUrlApi}discover/tv?api_key=${config.tmdb.apiKey}&language=en-US
+    axios.get(`${baseUrlApi}discover/tv?api_key=${apiKey}&language=en-US
       &sort_by=vote_average.desc&first_air_date_year=2017&page=1&timezone=America
       %2FNew_York&vote_count.gte=50&include_null_first_air_dates=false`)
     .then(response => {
@@ -41,7 +51,7 @@ class Home extends Component{
       console.log(error);
     });
 
-    axios.get(`${config.tmdb.baseUrlApi}person/popular?api_key=${config.tmdb.apiKey}&language=en-US&page=1`)
+    axios.get(`${baseUrlApi}person/popular?api_key=${apiKey}&language=en-US&page=1`)
     .then(response => {
       this.setState({
         dataPerson: response.data.results,
@@ -53,6 +63,13 @@ class Home extends Component{
   }
 
   render () {
+
+    const {
+      movie,
+      tv,
+      person
+    } = config.categories;
+
     return (
       <div>
         <MainLayout>
@@ -61,21 +78,21 @@ class Home extends Component{
               icon="ticket"
               title="Best movies of 2017"
               contentToDisplay={18}
-              type={config.categories.movie}
+              type={movie}
               data={this.state.dataMovie}
             />
             <RowPosters
               icon="television"
               title="Best series of 2017"
               contentToDisplay={18}
-              type={config.categories.tv}
+              type={tv}
               data={this.state.dataTV}
             />
             <RowPosters
               icon="user"
               title="Most popular actors"
               contentToDisplay={18}
-              type={config.categories.person}
+              type={person}
               data={this.state.dataPerson}
             />
           </div>

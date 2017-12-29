@@ -6,19 +6,29 @@ import { Link } from 'react-router-dom';
 class Poster extends Component{
 
   render () {
+
+    const {
+      cat,
+      id,
+      posterURL,
+      value,
+      icon,
+      rating
+    } = this.props;
+
     return (
       <div className="poster">
         <Link
-          to={`/detailView/${this.props.cat}/${this.props.id}`}
+          to={`/detailView/${cat}/${id}`}
         >
           <img
-            src={this.props.posterURL}
-            alt={this.props.value}
+            src={posterURL}
+            alt={value}
           />
           <PosterInfo
-            icon={this.props.icon}
-            value={this.props.value}
-            rating={this.props.rating}
+            icon={icon}
+            value={value}
+            rating={rating}
           />
         </Link>
       </div>
