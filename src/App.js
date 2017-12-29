@@ -17,6 +17,12 @@ import {
   Route
 } from 'react-router-dom';
 
+const {
+  movie,
+  tv,
+  person
+} = config.categories;
+
 class App extends Component {
 
   render () {
@@ -30,15 +36,15 @@ class App extends Component {
               component={HomePage}
             />
             <Route
-              path={"/:cat"}
+              exact path={`/${movie}`}
               component={MoviePage}
             />
             <Route
-              path={"/:cat"}
+              exact path={`/${tv}`}
               component={TvPage}
             />
             <Route
-              path={"/:cat"}
+              exact path={`/${person}`}
               component={PersonPage}
             />
             <Route
