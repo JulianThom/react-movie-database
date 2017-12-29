@@ -12,11 +12,6 @@ const {
   apiKey
 } = config.tmdb;
 
-const {
-  baseUrlBackdropW1280,
-  baseUrlPosterW342
-} = config.tmdb.assets;
-
 class Home extends Component{
 
   state = {
@@ -26,7 +21,6 @@ class Home extends Component{
   };
 
   componentDidMount() {
-    console.log(config)
     axios.get(`${baseUrlApi}discover/movie?api_key=${apiKey}&language=en-US
                 &sort_by=vote_average.desc&include_adult=false&include_video=false&page=1
                 &primary_release_year=2017&vote_count.gte=1000`)
@@ -72,7 +66,7 @@ class Home extends Component{
 
     return (
       <div>
-        <MainLayout>
+        <MainLayout slideshowCat={movie}>
           <div className="wrapperRow">
             <RowPosters
               icon="ticket"

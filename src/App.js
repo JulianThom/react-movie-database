@@ -21,12 +21,6 @@ class App extends Component {
 
   render () {
 
-    const {
-      movie,
-      tv,
-      person
-    } = config.categories;
-
     return (
       <Router>
         <div>
@@ -36,15 +30,15 @@ class App extends Component {
               component={HomePage}
             />
             <Route
-              path={`/${movie}`}
+              path={"/:cat"}
               component={MoviePage}
             />
             <Route
-              path={`/${tv}`}
+              path={"/:cat"}
               component={TvPage}
             />
             <Route
-              path={`/${person}`}
+              path={"/:cat"}
               component={PersonPage}
             />
             <Route
