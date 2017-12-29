@@ -8,6 +8,16 @@ import RowPosters from '../../../components/RowPosters/'
 import axios from 'axios';
 var Rating = require('react-rating');
 
+const {
+  baseUrlApi,
+  apiKey
+} = config.tmdb;
+
+const {
+  baseUrlBackdropW1280,
+  baseUrlPosterW342
+} = config.tmdb.assets;
+
 class DetailView extends Component{
 
   state = {
@@ -26,8 +36,8 @@ class DetailView extends Component{
 
   componentDidMount() {
     axios.get(`
-        ${config.tmdb.baseUrlApi}${this.state.routeCat}/${this.state.routeID}
-        ?api_key=${config.tmdb.apiKey}&language=en-US&append_to_response=videos
+        ${baseUrlApi}${this.state.routeCat}/${this.state.routeID}
+        ?api_key=${apiKey}&language=en-US&append_to_response=videos
       `)
     .then(response => {
       this.setState({
@@ -39,8 +49,8 @@ class DetailView extends Component{
     });
 
     axios.get(`
-        ${config.tmdb.baseUrlApi}${this.state.routeCat}/${this.state.routeID}
-        /similar?api_key=${config.tmdb.apiKey}&language=en-US&page=1
+        ${baseUrlApi}${this.state.routeCat}/${this.state.routeID}
+        /similar?api_key=${apiKey}&language=en-US&page=1
       `)
     .then(response => {
       this.setState({
@@ -52,8 +62,8 @@ class DetailView extends Component{
     });
 
     axios.get(`
-      ${config.tmdb.baseUrlApi}${this.state.routeCat}/${this.state.routeID}
-      /credits?api_key=${config.tmdb.apiKey}
+      ${baseUrlApi}${this.state.routeCat}/${this.state.routeID}
+      /credits?api_key=${apiKey}
       `)
     .then(response => {
       this.setState({
@@ -69,24 +79,34 @@ class DetailView extends Component{
     console.log(this.state.data);
     console.log(this.state.cast);
     console.log(this.state.similar);
-    const genres = this.state.data.genres
+
+    const {
+      genres,
+      backdrop_path,
+      poster_path,
+      vote_average,
+      release_date,
+      runtime,
+      overview,
+      title
+    } = this.state.data;
 
     return (
       <div>
         <DetailViewLayout
-          backgroundImage={`url(${config.tmdb.assets.baseUrlBackdropW1280}${this.state.data.backdrop_path})`}>
+          backgroundImage={`url(${baseUrlBackdropW1280}${backdrop_path})`}>
           <div className="poster">
             <img
-              src={`${config.tmdb.assets.baseUrlPosterW342}${this.state.data.poster_path}`}
-              alt={this.state.data.title}
+              src={`${baseUrlPosterW342}${poster_path}`}
+              alt={title}
               />
           </div>
           <div className="infoDetailView">
             <div className="title">
-              {this.state.data.title}
+              {title}
             </div>
             <Rating
-              initialRate={Math.round(this.state.data.vote_average)/2}
+              initialRate={Math.round(vote_average)/2}
               empty="fa fa-star-o"
               full="fa fa-star"
               readonly
@@ -94,10 +114,10 @@ class DetailView extends Component{
               />
             <div className="secondaryInfo">
               <p>
-                Released on {this.state.data.release_date}
+                Released on {release_date}
               </p>
               <p>
-                Duration: {this.state.data.runtime} min.
+                Duration: {runtime} min.
               </p>
               <ul className="genres">
                 {
@@ -112,7 +132,7 @@ class DetailView extends Component{
           </div>
           <div className="overview">
             <p>
-              {this.state.data.overview}
+              {overview}
             </p>
           </div>
           <div className="wrapperRow">

@@ -5,6 +5,15 @@ import PosterInfo from '../PosterInfo/';
 import config from '../../config'
 import axios from 'axios';
 
+const {
+  baseUrlApi,
+  apiKey
+} = config.tmdb;
+
+const {
+  baseUrlBackdropW780
+} = config.tmdb.assets;
+
 const randomPage = Math.floor(Math.random() * 100);
 
 class Slideshow extends Component {
@@ -15,7 +24,7 @@ class Slideshow extends Component {
   };
 
   componentDidMount() {
-    axios.get(`${config.tmdb.baseUrlApi}movie/popular?api_key=${config.tmdb.apiKey}&language=en-US&page=${randomPage}`)
+    axios.get(`${baseUrlApi}movie/popular?api_key=${apiKey}&language=en-US&page=${randomPage}`)
     .then(response => {
       this.setState({
         data: response.data.results,
@@ -47,7 +56,7 @@ class Slideshow extends Component {
                   return (
                     <div key={elem}>
                       <PosterInfo value={value.title}/>
-                      <img src={`${config.tmdb.assets.baseUrlBackdropW780}${value.backdrop_path}`} alt={value.title}/>
+                      <img src={`${baseUrlBackdropW780}${value.backdrop_path}`} alt={value.title}/>
                     </div>
                   )
                 })

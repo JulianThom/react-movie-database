@@ -20,6 +20,13 @@ import {
 class App extends Component {
 
   render () {
+
+    const {
+      movie,
+      tv,
+      person
+    } = config.categories;
+
     return (
       <Router>
         <div>
@@ -29,15 +36,15 @@ class App extends Component {
               component={HomePage}
             />
             <Route
-              path={`/${config.categories.movie}`}
+              path={`/${movie}`}
               component={MoviePage}
             />
             <Route
-              path={`/${config.categories.tv}`}
+              path={`/${tv}`}
               component={TvPage}
             />
             <Route
-              path={`/${config.categories.person}`}
+              path={`/${person}`}
               component={PersonPage}
             />
             <Route

@@ -9,7 +9,15 @@ import './index.css';
 import config from '../../config.js'
 
 class Navigation extends Component {
+
   render() {
+
+    const {
+      movie,
+      tv,
+      person
+    } = config.categories;
+
     return (
       <div>
         <Navbar>
@@ -28,7 +36,7 @@ class Navigation extends Component {
               <li>
                 <NavLink
                   activeClassName="active"
-                  to={`/${config.categories.movie}`}
+                  to={`/${movie}`}
                 >
                   <i className="fa fa-ticket"></i> Movies
                 </NavLink>
@@ -36,7 +44,7 @@ class Navigation extends Component {
               <li>
                 <NavLink
                   activeClassName="active"
-                  to={`/${config.categories.tv}`}
+                  to={`/${tv}`}
                 >
                   <i className="fa fa-television"></i> Series
                 </NavLink>
@@ -44,7 +52,7 @@ class Navigation extends Component {
               <li>
                 <NavLink
                   activeClassName="active"
-                  to={`/${config.categories.person}`}
+                  to={`/${person}`}
                 >
                   <i className="fa fa-user"></i> Actors
                 </NavLink>
