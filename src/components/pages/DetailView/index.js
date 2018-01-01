@@ -28,57 +28,62 @@ class DetailView extends Component{
     routeCat: this.props.match.params.cat,
   };
 
+  request = () => {
+    axios.get(`
+      ${baseUrlApi}${this.state.routeCat}/${this.state.routeID}
+      ?api_key=${apiKey}&language=en-US&append_to_response=videos
+      `)
+      .then(response => {
+        this.setState({
+          data: response.data,
+        })
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+      axios.get(`
+        ${baseUrlApi}${this.state.routeCat}/${this.state.routeID}
+        /similar?api_key=${apiKey}&language=en-US&page=1
+        `)
+        .then(response => {
+          this.setState({
+            similar: response.data.results,
+          })
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+
+        axios.get(`
+          ${baseUrlApi}${this.state.routeCat}/${this.state.routeID}
+          /credits?api_key=${apiKey}
+          `)
+          .then(response => {
+            this.setState({
+              cast: response.data.cast,
+            })
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        }
+
   componentWillReceiveProps(nextProps) {
+    this.setState({
+      routeID: nextProps.match.params.id
+    })
     if (this.props.match.params.id !== nextProps.match.params.id) {
-      // request pour mettre  a jour les data
+      this.request();
     }
+    console.log(this);
   }
 
   componentDidMount() {
-    axios.get(`
-        ${baseUrlApi}${this.state.routeCat}/${this.state.routeID}
-        ?api_key=${apiKey}&language=en-US&append_to_response=videos
-      `)
-    .then(response => {
-      this.setState({
-        data: response.data,
-      })
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-
-    axios.get(`
-        ${baseUrlApi}${this.state.routeCat}/${this.state.routeID}
-        /similar?api_key=${apiKey}&language=en-US&page=1
-      `)
-    .then(response => {
-      this.setState({
-        similar: response.data.results,
-      })
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-
-    axios.get(`
-      ${baseUrlApi}${this.state.routeCat}/${this.state.routeID}
-      /credits?api_key=${apiKey}
-      `)
-    .then(response => {
-      this.setState({
-        cast: response.data.cast,
-      })
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+    this.request();
   }
 
   render () {
-    console.log(this.state.data);
-    console.log(this.state.cast);
-    console.log(this.state.similar);
 
     const {
       genres,
