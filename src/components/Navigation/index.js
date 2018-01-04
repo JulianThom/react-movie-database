@@ -6,12 +6,11 @@ import { Navbar,
          from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
 import './index.css';
-import config from '../../config.js'
+
+import config from '../../config'
 
 class Navigation extends Component {
-
   render() {
-
     const {
       movie,
       tv,
@@ -23,9 +22,7 @@ class Navigation extends Component {
         <Navbar>
           <Navbar.Header>
             <Navbar.Brand>
-              <Link
-                to="/"
-              >
+              <Link exact to="/">
                 RMDB
               </Link>
             </Navbar.Brand>
