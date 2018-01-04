@@ -84,7 +84,7 @@ class DetailView extends Component{
     });
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.request();
   }
 
@@ -92,9 +92,9 @@ class DetailView extends Component{
     this.setState({
       routeID: nextProps.match.params.id
     })
-    .catch(function (error) {
-      console.log(error);
-    });
+    if (this.props.match.params.id !== nextProps.match.params.id) {
+      this.request();
+    }
   }
 
   render () {
