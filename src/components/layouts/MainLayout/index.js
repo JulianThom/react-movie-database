@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './index.css';
 
 import Slideshow from '../../../components/Slideshow/'
-import config from '../../../config'
 
 class MainLayout extends Component {
 

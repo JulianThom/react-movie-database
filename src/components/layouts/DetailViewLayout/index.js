@@ -7,7 +7,7 @@ class DetailViewLayout extends Component {
     {
       const backgroundStyle = {
         'width': '100%',
-        'min-height': 'calc(100vh - var(--headerFooterHeight))',
+        'minHeight': 'calc(100vh - var(--headerFooterHeight))',
         'backgroundSize': 'cover',
         'backgroundImage': `${this.props.backgroundImage}`,
       }
