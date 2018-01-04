@@ -52,7 +52,7 @@
 
 .genres li::after {
   content: ", ";
-    white-space: pre;
+  white-space: pre;
 }
 
 .genres li:last-child::after {
