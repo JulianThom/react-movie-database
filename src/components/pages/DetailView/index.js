@@ -4,6 +4,7 @@ import './index.css';
 import config from '../../../config.js'
 import DetailViewLayout from '../../../components/layouts/DetailViewLayout/';
 import RowPosters from '../../../components/RowPosters/'
+import RowReviews from '../../../components/RowReviews/'
 
 import axios from 'axios';
 var Rating = require('react-rating');
@@ -26,6 +27,7 @@ class DetailView extends Component{
     cast: [],
     routeID: this.props.match.params.id,
     routeCat: this.props.match.params.cat,
+    review: []
   };
 
   request = () => {
@@ -33,58 +35,70 @@ class DetailView extends Component{
       ${baseUrlApi}${this.state.routeCat}/${this.state.routeID}
       ?api_key=${apiKey}&language=en-US&append_to_response=videos
       `)
-      .then(response => {
-        this.setState({
-          data: response.data,
-        })
+    .then(response => {
+      this.setState({
+        data: response.data,
       })
-      .catch(function (error) {
-        console.log(error);
-      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 
-      axios.get(`
-        ${baseUrlApi}${this.state.routeCat}/${this.state.routeID}
-        /similar?api_key=${apiKey}&language=en-US&page=1
-        `)
-        .then(response => {
-          this.setState({
-            similar: response.data.results,
-          })
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+    axios.get(`
+      ${baseUrlApi}${this.state.routeCat}/${this.state.routeID}
+      /similar?api_key=${apiKey}&language=en-US&page=1
+      `)
+    .then(response => {
+      this.setState({
+        similar: response.data.results,
+      })
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 
-        axios.get(`
-          ${baseUrlApi}${this.state.routeCat}/${this.state.routeID}
-          /credits?api_key=${apiKey}
-          `)
-          .then(response => {
-            this.setState({
-              cast: response.data.cast,
-            })
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-        }
+    axios.get(`
+      ${baseUrlApi}${this.state.routeCat}/${this.state.routeID}
+      /credits?api_key=${apiKey}
+      `)
+    .then(response => {
+      this.setState({
+        cast: response.data.cast,
+      })
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+    axios.get(`
+      ${baseUrlApi}${this.state.routeCat}/${this.state.routeID}
+      /reviews?api_key=${apiKey}&language=en-US&page=1
+      `)
+    .then(response => {
+      this.setState({
+        review: response.data.results,
+      })
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
+  componentDidMount () {
+    this.request();
+  }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
       routeID: nextProps.match.params.id
     })
-    if (this.props.match.params.id !== nextProps.match.params.id) {
-      this.request();
-    }
-    console.log(this);
-  }
-
-  componentDidMount() {
-    this.request();
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
   render () {
-
+    console.log(this.state.review);
     const {
       genres,
       backdrop_path,
@@ -126,10 +140,12 @@ class DetailView extends Component{
               </p>
               <ul className="genres">
                 {
-                  genres && genres.slice(0, 4).map(function(value, elem) {
-                    return (
-                      <li key={elem}>{value.name}</li>
-                    )
+                  genres && genres.map(function(value, elem) {
+                    if ( elem <= 4 ) {
+                      return (
+                        <li key={elem}>{value.name}</li>
+                      )
+                    }
                   })
                 }
               </ul>
@@ -155,6 +171,12 @@ class DetailView extends Component{
               type={this.state.routeCat}
               data={this.state.similar}
             />
+            {
+              this.state.review.length >= 1 &&
+              <RowReviews
+                data={this.state.review}
+              />
+            }
           </div>
         </DetailViewLayout>
       </div>
