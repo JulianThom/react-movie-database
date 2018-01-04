@@ -1,0 +1,19 @@
+.wrapperReview {
+  width: 100%;
+  margin-bottom: 20px;
+  color: var(--grayBootstrap);
+  background-color: var(--gray);
+  padding: 10px 20px;
+  border-bottom: 3px solid var(--grayBootstrap);
+  border-radius: 8px;
+  text-shadow: 0 0;
+}
+
+.wrapperReview .author {
+  font-size: 20px;
+}
+
+.wrapperReview .review {
+  font-size: 18px;
+  font-weight: 100;
+}

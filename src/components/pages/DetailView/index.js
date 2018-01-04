@@ -4,6 +4,8 @@ import './index.css';
 import config from '../../../config.js'
 import DetailViewLayout from '../../../components/layouts/DetailViewLayout/';
 import RowPosters from '../../../components/RowPosters/'
+import RowReviews from '../../../components/RowReviews/'
+import Review from '../../../components/Review/'
 
 import axios from 'axios';
 var Rating = require('react-rating');
@@ -26,6 +28,7 @@ class DetailView extends Component{
     cast: [],
     routeID: this.props.match.params.id,
     routeCat: this.props.match.params.cat,
+    review: []
   };
 
   componentWillReceiveProps(nextProps) {
@@ -73,13 +76,23 @@ class DetailView extends Component{
     .catch(function (error) {
       console.log(error);
     });
+
+    axios.get(`
+      ${baseUrlApi}${this.state.routeCat}/${this.state.routeID}
+      /reviews?api_key=${apiKey}&language=en-US&page=1
+      `)
+    .then(response => {
+      this.setState({
+        review: response.data.results,
+      })
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
   render () {
-    console.log(this.state.data);
-    console.log(this.state.cast);
-    console.log(this.state.similar);
-
+console.log(this.state.review);
     const {
       genres,
       backdrop_path,
@@ -121,10 +134,12 @@ class DetailView extends Component{
               </p>
               <ul className="genres">
                 {
-                  genres && genres.slice(0, 4).map(function(value, elem) {
-                    return (
-                      <li key={elem}>{value.name}</li>
-                    )
+                  genres && genres.map(function(value, elem) {
+                    if ( elem <= 4 ) {
+                      return (
+                        <li key={elem}>{value.name}</li>
+                      )
+                    }
                   })
                 }
               </ul>
@@ -150,6 +165,12 @@ class DetailView extends Component{
               type={this.state.routeCat}
               data={this.state.similar}
             />
+            {
+              this.state.review.length >= 1 &&
+              <RowReviews
+                data={this.state.review}
+              />
+            }
           </div>
         </DetailViewLayout>
       </div>
