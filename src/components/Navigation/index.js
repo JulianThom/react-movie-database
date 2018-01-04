@@ -22,7 +22,7 @@ class Navigation extends Component {
         <Navbar>
           <Navbar.Header>
             <Navbar.Brand>
-              <Link exact to="/">
+              <Link exact="true" to="/">
                 RMDB
               </Link>
             </Navbar.Brand>
