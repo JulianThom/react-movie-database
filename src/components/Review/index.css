@@ -13,7 +13,30 @@
   font-size: 20px;
 }
 
+/* styles for '...' */
 .wrapperReview .review {
   font-size: 18px;
   font-weight: 100;
+  overflow: hidden;
+  position: relative;
+  line-height: 1.2em;
+  max-height: 3.6em;
+  text-align: justify;
+
+  padding-right: 1em;
+}
+.wrapperReview .review:before {
+  content: '...';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.wrapperReview .review:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  width: 1em;
+  height: 1em;
+  margin-top: 0.2em;
+  background: var(--gray);
 }
