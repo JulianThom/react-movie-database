@@ -30,16 +30,10 @@ class DetailView extends Component{
     review: []
   };
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.match.params.id !== nextProps.match.params.id) {
-      // request pour mettre  a jour les data
-    }
-  }
-
-  componentDidMount() {
+  request = () => {
     axios.get(`
-        ${baseUrlApi}${this.state.routeCat}/${this.state.routeID}
-        ?api_key=${apiKey}&language=en-US&append_to_response=videos
+      ${baseUrlApi}${this.state.routeCat}/${this.state.routeID}
+      ?api_key=${apiKey}&language=en-US&append_to_response=videos
       `)
     .then(response => {
       this.setState({
@@ -51,8 +45,8 @@ class DetailView extends Component{
     });
 
     axios.get(`
-        ${baseUrlApi}${this.state.routeCat}/${this.state.routeID}
-        /similar?api_key=${apiKey}&language=en-US&page=1
+      ${baseUrlApi}${this.state.routeCat}/${this.state.routeID}
+      /similar?api_key=${apiKey}&language=en-US&page=1
       `)
     .then(response => {
       this.setState({
@@ -90,8 +84,21 @@ class DetailView extends Component{
     });
   }
 
+  componentDidMount () {
+    this.request();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      routeID: nextProps.match.params.id
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
   render () {
-console.log(this.state.review);
+    console.log(this.state.review);
     const {
       genres,
       backdrop_path,
