@@ -5,7 +5,6 @@ import config from '../../../config.js'
 import DetailViewLayout from '../../../components/layouts/DetailViewLayout/';
 import RowPosters from '../../../components/RowPosters/'
 import RowReviews from '../../../components/RowReviews/'
-import Review from '../../../components/Review/'
 
 import axios from 'axios';
 var Rating = require('react-rating');
