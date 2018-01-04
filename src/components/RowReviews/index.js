@@ -20,7 +20,6 @@ class RowReviews extends Component{
                 key={elem}
                 author={value.author}
                 review={value.content}
-                readMore={value.url}
               />
             )
           })
