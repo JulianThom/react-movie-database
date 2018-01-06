@@ -208,13 +208,16 @@ class DetailView extends Component{
               type={config.categories.person}
               data={this.state.cast}
             />
-            <RowPosters
-              icon="chain"
-              title="Similars"
-              contentToDisplay={6}
-              type={this.state.routeCat}
-              data={this.state.similar}
-            />
+            {
+              this.state.similar.length >= 1 &&
+              <RowPosters
+                icon="chain"
+                title="Similars"
+                contentToDisplay={6}
+                type={this.state.routeCat}
+                data={this.state.similar}
+              />
+            }
             {
               this.state.review.length >= 1 &&
               <RowReviews
