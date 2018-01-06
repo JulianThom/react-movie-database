@@ -1,5 +1,38 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
 .poster {
   float:left;
+  position: relative;
+}
+
+.poster .posterLink {
+  opacity: 1;
+  transition: .3s;
+}
+
+.poster .posterLink:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.poster .iconPlay {
+  position: absolute;
+  top: 33%;
+  left: 30%;
+  color: var(--white);
+  display: none;
+}
+
+.poster:hover .iconPlay {
+  display: block;
 }
 
 .infoDetailView {
@@ -70,4 +103,18 @@
 
 .containerDetailView h3 {
   color: var(--white);
+}
+
+.trailer {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  margin-top: 77px;
+  transform: translateX(-50%);
+  transition: fadeIn .3s linear;
+}
+
+.trailer .iconClose {
+  color: var(--white);
+  cursor: pointer;
 }
