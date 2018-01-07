@@ -14,5 +14,14 @@ export default {
       baseUrlPosterW780: 'http://image.tmdb.org/t/p/780/',
       baseUrlProfileW185: 'http://image.tmdb.org/t/p/w185/'
     }
+  },
+  trailer: {
+    opts: {
+      width: '1000',
+      height: '563',
+      playerVars: {
+        autoplay: 1
+      }
+    }
   }
 }

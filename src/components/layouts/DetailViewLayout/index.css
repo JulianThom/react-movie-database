@@ -13,6 +13,6 @@
   min-height: calc(100vh - var(--headerFooterHeight));
   opacity: 1;
   margin: auto;
-  padding: 100px 30px 30px;
+  padding-top: 100px;
   text-shadow: var(--textShadow);
 }
