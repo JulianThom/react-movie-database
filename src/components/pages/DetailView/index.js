@@ -116,6 +116,10 @@ class DetailView extends Component{
     disableScroll.off();
   };
 
+  componentWillUnmount () {
+    disableScroll.off();
+  }
+
   render () {
     console.log(this.state.data);
     const {
