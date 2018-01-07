@@ -7,6 +7,8 @@ import RowPosters from '../../../components/RowPosters/'
 import RowReviews from '../../../components/RowReviews/'
 
 import axios from 'axios';
+import YouTube from 'react-youtube';
+import disableScroll from 'disable-scroll';
 var Rating = require('react-rating');
 
 const {
@@ -27,7 +29,8 @@ class DetailView extends Component{
     cast: [],
     routeID: this.props.match.params.id,
     routeCat: this.props.match.params.cat,
-    review: []
+    review: [],
+    showTrailer: false
   };
 
   request = () => {
@@ -97,8 +100,28 @@ class DetailView extends Component{
     }
   }
 
+  onHoverPoster = () => console.log('hover!');
+
+  onClickPoster = () => {
+    this.setState({
+      showTrailer: true
+    }),
+    disableScroll.on();
+  };
+
+  onClickCloseTrailer = () => {
+    this.setState({
+      showTrailer: false
+    }),
+    disableScroll.off();
+  };
+
+  componentWillUnmount () {
+    disableScroll.off();
+  }
+
   render () {
-    console.log(this.state.review);
+    console.log(this.state.data);
     const {
       genres,
       backdrop_path,
@@ -107,18 +130,43 @@ class DetailView extends Component{
       release_date,
       runtime,
       overview,
-      title
+      title,
+      videos
     } = this.state.data;
 
     return (
       <div>
+        { this.state.showTrailer &&
+          <div className="trailer">
+            <i
+              className="fa fa-window-close fa-2x iconClose pull-right"
+              onClick={this.onClickCloseTrailer}
+              >
+            </i>
+            <YouTube
+              videoId={videos.results[0].key}
+              id={videos.results[0].id}
+              opts={config.trailer.opts}
+            />
+          </div>
+        }
         <DetailViewLayout
           backgroundImage={`url(${baseUrlBackdropW1280}${backdrop_path})`}>
           <div className="poster">
-            <img
-              src={`${baseUrlPosterW342}${poster_path}`}
-              alt={title}
-              />
+            <a
+              className="posterLink"
+              onMouseOver={this.onHoverPoster}
+              onClick={this.onClickPoster}
+              target="blank"
+            >
+              <img
+                src={`${baseUrlPosterW342}${poster_path}`}
+                alt={title}
+                />
+              <i
+                className="iconPlay fa fa-play-circle fa-5x">
+              </i>
+            </a>
           </div>
           <div className="infoDetailView">
             <div className="title">
@@ -164,13 +212,16 @@ class DetailView extends Component{
               type={config.categories.person}
               data={this.state.cast}
             />
-            <RowPosters
-              icon="chain"
-              title="Similars"
-              contentToDisplay={6}
-              type={this.state.routeCat}
-              data={this.state.similar}
-            />
+            {
+              this.state.similar.length >= 1 &&
+              <RowPosters
+                icon="chain"
+                title="Similars"
+                contentToDisplay={6}
+                type={this.state.routeCat}
+                data={this.state.similar}
+              />
+            }
             {
               this.state.review.length >= 1 &&
               <RowReviews
