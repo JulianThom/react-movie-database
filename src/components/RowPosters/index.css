@@ -9,8 +9,11 @@
 .containerPoster {
   display: flex;
   flex-wrap: wrap;
-  flex: 20 1 auto;
   flex-direction: row;
+}
+
+.rowPoster {
+  display: flex;
 }
 
 .rowPoster .poster {
