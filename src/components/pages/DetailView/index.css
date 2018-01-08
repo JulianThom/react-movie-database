@@ -18,7 +18,7 @@
   transition: .3s;
 }
 
-.poster .posterLink:hover {
+.poster .posterLinkHover:hover {
   opacity: 0.5;
   cursor: pointer;
 }
