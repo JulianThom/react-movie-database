@@ -8,6 +8,10 @@
     }
 }
 
+.wrapperInfo {
+  display: flex;
+}
+
 .poster {
   float:left;
   position: relative;

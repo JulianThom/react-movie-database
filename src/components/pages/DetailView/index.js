@@ -165,54 +165,56 @@ class DetailView extends Component{
         }
         <DetailViewLayout
           backgroundImage={`url(${baseUrlBackdropW1280}${backdrop_path})`}>
-          <div className="poster">
-            <a
-              className={this.state.hasTrailer ? 'posterLinkHover' : 'posterLink'}
-              onClick={this.onClickPoster}
-              onMouseOver={this.onHoverPoster}
-              target="blank"
-            >
-              <img
-                src={`${baseUrlPosterW342}${poster_path}`}
-                alt={title}
-              />
-              {
-                this.state.hasTrailer &&
-                <i
-                  className="iconPlay fa fa-play-circle fa-5x">
-                </i>
-              }
-            </a>
-          </div>
-          <div className="infoDetailView">
-            <div className="title">
-              {title}
-            </div>
-            <Rating
-              initialRate={Math.round(vote_average)/2}
-              empty="fa fa-star-o"
-              full="fa fa-star"
-              readonly
-              className="ratingDetailView"
-              />
-            <div className="secondaryInfo">
-              <p>
-                Released on {release_date}
-              </p>
-              <p>
-                Duration: {runtime} min.
-              </p>
-              <ul className="genres">
+          <div className="wrapperInfo">
+            <div className="poster">
+              <a
+                className={this.state.hasTrailer ? 'posterLinkHover' : 'posterLink'}
+                onClick={this.onClickPoster}
+                onMouseOver={this.onHoverPoster}
+                target="blank"
+              >
+                <img
+                  src={`${baseUrlPosterW342}${poster_path}`}
+                  alt={title}
+                />
                 {
-                  genres && genres.map(function(value, elem) {
-                    if ( elem <= 4 ) {
-                      return (
-                        <li key={elem}>{value.name}</li>
-                      )
-                    }
-                  })
+                  this.state.hasTrailer &&
+                  <i
+                    className="iconPlay fa fa-play-circle fa-5x">
+                  </i>
                 }
-              </ul>
+              </a>
+            </div>
+            <div className="infoDetailView">
+              <div className="title">
+                {title}
+              </div>
+              <Rating
+                initialRate={Math.round(vote_average)/2}
+                empty="fa fa-star-o"
+                full="fa fa-star"
+                readonly
+                className="ratingDetailView"
+                />
+              <div className="secondaryInfo">
+                <p>
+                  Released on {release_date}
+                </p>
+                <p>
+                  Duration: {runtime} min.
+                </p>
+                <ul className="genres">
+                  {
+                    genres && genres.map(function(value, elem) {
+                      if ( elem <= 4 ) {
+                        return (
+                          <li key={elem}>{value.name}</li>
+                        )
+                      }
+                    })
+                  }
+                </ul>
+              </div>
             </div>
           </div>
           <div className="overview">
