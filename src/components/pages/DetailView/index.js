@@ -30,6 +30,7 @@ class DetailView extends Component{
     routeID: this.props.match.params.id,
     routeCat: this.props.match.params.cat,
     review: [],
+    hasTrailer: "",
     showTrailer: false
   };
 
@@ -100,19 +101,29 @@ class DetailView extends Component{
     }
   }
 
-  onHoverPoster = () => console.log('hover!');
+  onHoverPoster = () => {
+    if ( this.state.data.videos.results.length <= 0 ) {
+      this.setState({
+        hasTrailer: false
+      })
+    }else{
+      this.setState({
+        hasTrailer: true
+      })
+    }
+  }
 
   onClickPoster = () => {
     this.setState({
       showTrailer: true
-    }),
-    disableScroll.on();
+    })
+    this.state.hasTrailer && disableScroll.on();
   };
 
   onClickCloseTrailer = () => {
     this.setState({
       showTrailer: false
-    }),
+    })
     disableScroll.off();
   };
 
@@ -121,7 +132,7 @@ class DetailView extends Component{
   }
 
   render () {
-    console.log(this.state.data);
+
     const {
       genres,
       backdrop_path,
@@ -134,9 +145,11 @@ class DetailView extends Component{
       videos
     } = this.state.data;
 
+
     return (
       <div>
-        { this.state.showTrailer &&
+        {
+          this.state.showTrailer && this.state.hasTrailer &&
           <div className="trailer">
             <i
               className="fa fa-window-close fa-2x iconClose pull-right"
@@ -154,18 +167,21 @@ class DetailView extends Component{
           backgroundImage={`url(${baseUrlBackdropW1280}${backdrop_path})`}>
           <div className="poster">
             <a
-              className="posterLink"
-              onMouseOver={this.onHoverPoster}
+              className={this.state.hasTrailer ? 'posterLinkHover' : 'posterLink'}
               onClick={this.onClickPoster}
+              onMouseOver={this.onHoverPoster}
               target="blank"
             >
               <img
                 src={`${baseUrlPosterW342}${poster_path}`}
                 alt={title}
-                />
-              <i
-                className="iconPlay fa fa-play-circle fa-5x">
-              </i>
+              />
+              {
+                this.state.hasTrailer &&
+                <i
+                  className="iconPlay fa fa-play-circle fa-5x">
+                </i>
+              }
             </a>
           </div>
           <div className="infoDetailView">
