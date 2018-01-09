@@ -30,7 +30,7 @@ class DetailView extends Component{
     routeID: this.props.match.params.id,
     routeCat: this.props.match.params.cat,
     review: [],
-    hasTrailer: "",
+    hasTrailer: false,
     showTrailer: false
   };
 
@@ -114,10 +114,11 @@ class DetailView extends Component{
   }
 
   onClickPoster = () => {
+    this.state.hasTrailer &&
     this.setState({
       showTrailer: true
     })
-    this.state.hasTrailer && disableScroll.on();
+    this.state.hasTrailer&& disableScroll.on();
   };
 
   onClickCloseTrailer = () => {
@@ -145,7 +146,6 @@ class DetailView extends Component{
       videos
     } = this.state.data;
 
-
     return (
       <div>
         {
@@ -164,7 +164,9 @@ class DetailView extends Component{
           </div>
         }
         <DetailViewLayout
-          backgroundImage={`url(${baseUrlBackdropW1280}${backdrop_path})`}>
+          opacityLayer={this.state.showTrailer}
+          backgroundImage={`${baseUrlBackdropW1280}${backdrop_path}`}
+          >
           <div className="wrapperInfo">
             <div className="poster">
               <a
