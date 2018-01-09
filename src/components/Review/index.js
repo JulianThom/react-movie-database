@@ -13,7 +13,7 @@ class Review extends Component{
           <ReactMarkdown
             source={this.props.review}
           />
-      </div>
+        </div>
       </div>
     )
   }

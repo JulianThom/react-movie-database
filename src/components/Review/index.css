@@ -9,6 +9,10 @@
   text-shadow: 0 0;
 }
 
+.wrapperReview:last-child {
+  margin-bottom: 0;
+}
+
 .wrapperReview .author {
   font-size: 20px;
 }
