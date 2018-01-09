@@ -1,13 +1,30 @@
-.layer {
+.wrapperDetailView {
+  width: 100%;
+  min-height: calc(100vh - var(--headerFooterHeight));
+}
+
+.wrapperDetailViewOpacity {
+  width: 100%;
+  min-height: calc(100vh - var(--headerFooterHeight));
+  opacity: 0.3;
+}
+
+.wrapperDetailView .layer {
   background: linear-gradient(to bottom, rgba(0,0,0,0) -150%,rgba(0,0,0,1) 90%);
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  position: absolute;
 }
 
-.containerDetailView {
+.wrapperDetailView .layer .backdropImage {
+  position:absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.wrapperDetailView .layer .containerDetailView {
   background-color: #00000000;
   width: 1000px;
   min-height: calc(100vh - var(--headerFooterHeight));
