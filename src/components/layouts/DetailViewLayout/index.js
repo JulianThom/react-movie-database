@@ -3,8 +3,21 @@ import './index.css';
 
 class DetailViewLayout extends Component {
 
+
 render ()
   {
+
+    const backdropStyle = {
+      'width': '100%',
+      'height': '100vh',
+      'backgroundImage': `url(${this.props.backdropImage})`,
+      'backgroundSize': 'cover',
+      'position': 'absolute',
+      'top': '0',
+      'zIndex': '-1',
+      'opacity': '.3'
+    }
+
     return (
       <div
         className="wrapperDetailView"
@@ -14,7 +27,11 @@ render ()
           <div className="containerDetailView">
             {this.props.children}
           </div>
-          <img className="backdropImage" src={this.props.backgroundImage} />
+          <div
+            className="backdropImage"
+            style={backdropStyle}
+          >
+          </div>
         </div>
       </div>
     )
