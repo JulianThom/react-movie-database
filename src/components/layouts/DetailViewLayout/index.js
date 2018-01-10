@@ -21,7 +21,7 @@ render ()
     return (
       <div
         className="wrapperDetailView"
-        style={this.props.opacityLayer === true ? {opacity:0.2} : {opacity:1}}
+        style={this.props.trailerIsDisplayed === true ? {opacity:0.2} : {opacity:1}}
         >
         <div className="layer">
           <div className="containerDetailView">
