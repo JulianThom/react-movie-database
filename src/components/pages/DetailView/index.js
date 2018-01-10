@@ -5,6 +5,7 @@ import config from '../../../config.js'
 import DetailViewLayout from '../../../components/layouts/DetailViewLayout/';
 import RowPosters from '../../../components/RowPosters/'
 import RowReviews from '../../../components/RowReviews/'
+import Spinner from '../../../components/Spinner/'
 
 import axios from 'axios';
 import YouTube from 'react-youtube';
@@ -24,6 +25,7 @@ const {
 class DetailView extends Component{
 
   state = {
+    loading: true,
     data: [],
     similar: [],
     cast: [],
@@ -54,7 +56,7 @@ class DetailView extends Component{
       `)
     .then(response => {
       this.setState({
-        similar: response.data.results,
+        similar: response.data.results
       })
     })
     .catch(function (error) {
@@ -67,7 +69,7 @@ class DetailView extends Component{
       `)
     .then(response => {
       this.setState({
-        cast: response.data.cast,
+        cast: response.data.cast
       })
     })
     .catch(function (error) {
@@ -81,6 +83,7 @@ class DetailView extends Component{
     .then(response => {
       this.setState({
         review: response.data.results,
+        loading: false
       })
     })
     .catch(function (error) {
@@ -94,7 +97,8 @@ class DetailView extends Component{
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      routeID: nextProps.match.params.id
+      routeID: nextProps.match.params.id,
+      loading: true
     })
     if (this.props.match.params.id !== nextProps.match.params.id) {
       this.request();
@@ -148,6 +152,9 @@ class DetailView extends Component{
 
     return (
       <div>
+        {
+          this.state.loading && <Spinner />
+        }
         {
           this.state.showTrailer && this.state.hasTrailer &&
           <div className="trailer">
