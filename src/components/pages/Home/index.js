@@ -31,9 +31,9 @@ class Home extends Component{
         dataMovie: response.data.results
       })
     })
-    .catch(function (error) {
+    .catch(error => {
       console.log(error);
-    });
+    })
 
     axios.get(`${baseUrlApi}discover/tv?api_key=${apiKey}&language=en-US
       &sort_by=vote_average.desc&first_air_date_year=2017&page=1&timezone=America
@@ -43,9 +43,9 @@ class Home extends Component{
         dataTV: response.data.results
       })
     })
-    .catch(function (error) {
+    .catch(error => {
       console.log(error);
-    });
+    })
 
     axios.get(`${baseUrlApi}person/popular?api_key=${apiKey}&language=en-US&page=1`)
     .then(response => {
@@ -54,9 +54,11 @@ class Home extends Component{
         loading: false
       })
     })
-    .catch(function (error) {
-      console.log(error);
-    });
+    .catch(error => {
+      this.setState({
+        loading: false
+      })
+    })
   }
 
   render () {

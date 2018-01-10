@@ -46,9 +46,9 @@ class DetailView extends Component{
         data: response.data,
       })
     })
-    .catch(function (error) {
+    .catch(error => {
       console.log(error);
-    });
+    })
 
     axios.get(`
       ${baseUrlApi}${this.state.routeCat}/${this.state.routeID}
@@ -59,9 +59,9 @@ class DetailView extends Component{
         similar: response.data.results
       })
     })
-    .catch(function (error) {
+    .catch(error => {
       console.log(error);
-    });
+    })
 
     axios.get(`
       ${baseUrlApi}${this.state.routeCat}/${this.state.routeID}
@@ -72,9 +72,9 @@ class DetailView extends Component{
         cast: response.data.cast
       })
     })
-    .catch(function (error) {
+    .catch(error => {
       console.log(error);
-    });
+    })
 
     axios.get(`
       ${baseUrlApi}${this.state.routeCat}/${this.state.routeID}
@@ -86,9 +86,11 @@ class DetailView extends Component{
         loading: false
       })
     })
-    .catch(function (error) {
-      console.log(error);
-    });
+    .catch(error => {
+      this.setState({
+        loading: false
+      })
+    })
   }
 
   componentDidMount() {
