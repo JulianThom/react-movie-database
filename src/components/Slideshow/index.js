@@ -21,7 +21,6 @@ class Slideshow extends Component {
 
   state = {
     data: [],
-    loading: true,
     currentSlide: 0
   };
 
@@ -29,13 +28,12 @@ class Slideshow extends Component {
     axios.get(`${baseUrlApi}movie/popular?api_key=${apiKey}&language=en-US&page=${randomPage}`)
     .then(response => {
       this.setState({
-        data: response.data.results,
-        loading: false
+        data: response.data.results
       })
     })
-    .catch(function (error) {
+    .catch(error => {
       console.log(error);
-    });
+    })
   }
 
   render() {
@@ -60,33 +58,29 @@ class Slideshow extends Component {
 
     return (
       <div>
+        <Slider {...settings}>
           {
-            this.state.loading ? <span className="loader fa fa-spinner fa-pulse fa-3x"></span>
-            :
-            <Slider {...settings}>
-              {
-                this.state.data.map ((value, elem) =>  {
-                  if ( elem < this.props.contentToDisplay) {
-                    return (
-                      <Link
-                        key={elem}
-                        to={`/detailView/${cat}/${value.id}`}
-                      >
-                        <div>
-                          {
-                            (elem === this.state.currentSlide)
-                            ? <PosterInfo value={value.title}/>
-                            : ""
-                          }
-                          <img src={`${baseUrlBackdropW780}${value.backdrop_path}`} alt={value.title}/>
-                        </div>
-                      </Link>
-                    )
-                  }
-                })
+            this.state.data.map ((value, elem) =>  {
+              if ( elem < this.props.contentToDisplay) {
+                return (
+                  <Link
+                    key={elem}
+                    to={`/detailView/${cat}/${value.id}`}
+                  >
+                    <div>
+                      {
+                        (elem === this.state.currentSlide)
+                        ? <PosterInfo value={value.title}/>
+                        : ""
+                      }
+                      <img src={`${baseUrlBackdropW780}${value.backdrop_path}`} alt={value.title}/>
+                    </div>
+                  </Link>
+                )
               }
-            </Slider>
+            })
           }
+        </Slider>
       </div>
     );
   }
