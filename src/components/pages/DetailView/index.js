@@ -48,6 +48,9 @@ class DetailView extends Component{
     })
     .catch(error => {
       console.log(error);
+      this.setState({
+        loading: false
+      })
     })
 
     axios.get(`
@@ -61,6 +64,9 @@ class DetailView extends Component{
     })
     .catch(error => {
       console.log(error);
+      this.setState({
+        loading: false
+      })
     })
 
     axios.get(`
@@ -74,6 +80,9 @@ class DetailView extends Component{
     })
     .catch(error => {
       console.log(error);
+      this.setState({
+        loading: false
+      })
     })
 
     axios.get(`
@@ -87,6 +96,7 @@ class DetailView extends Component{
       })
     })
     .catch(error => {
+      console.log(error);
       this.setState({
         loading: false
       })

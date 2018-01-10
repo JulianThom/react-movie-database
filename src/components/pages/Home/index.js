@@ -33,6 +33,9 @@ class Home extends Component{
     })
     .catch(error => {
       console.log(error);
+      this.setState({
+        loading: false
+      })
     })
 
     axios.get(`${baseUrlApi}discover/tv?api_key=${apiKey}&language=en-US
@@ -45,6 +48,9 @@ class Home extends Component{
     })
     .catch(error => {
       console.log(error);
+      this.setState({
+        loading: false
+      })
     })
 
     axios.get(`${baseUrlApi}person/popular?api_key=${apiKey}&language=en-US&page=1`)
@@ -55,6 +61,7 @@ class Home extends Component{
       })
     })
     .catch(error => {
+      console.log(error);
       this.setState({
         loading: false
       })
