@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './index.css';
 
 import RowPosters from '../../../components/RowPosters/'
+import Spinner from '../../../components/Spinner/'
 import MainLayout from '../../../components/layouts/MainLayout/'
 
 import axios from 'axios';
@@ -15,9 +16,10 @@ const {
 class Home extends Component{
 
   state = {
+    loading: true,
     dataMovie: [],
     dataTV: [],
-    dataPerson: [],
+    dataPerson: []
   };
 
   componentDidMount() {
@@ -26,7 +28,7 @@ class Home extends Component{
                 &primary_release_year=2017&vote_count.gte=1000`)
     .then(response => {
       this.setState({
-        dataMovie: response.data.results,
+        dataMovie: response.data.results
       })
     })
     .catch(function (error) {
@@ -38,7 +40,7 @@ class Home extends Component{
       %2FNew_York&vote_count.gte=50&include_null_first_air_dates=false`)
     .then(response => {
       this.setState({
-        dataTV: response.data.results,
+        dataTV: response.data.results
       })
     })
     .catch(function (error) {
@@ -49,6 +51,7 @@ class Home extends Component{
     .then(response => {
       this.setState({
         dataPerson: response.data.results,
+        loading: false
       })
     })
     .catch(function (error) {
@@ -66,6 +69,9 @@ class Home extends Component{
 
     return (
       <div>
+        {
+          this.state.loading && <Spinner />
+        }
         <MainLayout slideshowCat={movie}>
           <div className="wrapperRow">
             <RowPosters
