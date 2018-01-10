@@ -164,7 +164,7 @@ class DetailView extends Component{
           </div>
         }
         <DetailViewLayout
-          opacityLayer={this.state.showTrailer}
+          trailerIsDisplayed={this.state.showTrailer}
           backdropImage={`${baseUrlBackdropW1280}${backdrop_path}`}
           >
           <div className="wrapperInfo">
