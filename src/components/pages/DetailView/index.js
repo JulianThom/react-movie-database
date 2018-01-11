@@ -111,10 +111,10 @@ class DetailView extends Component{
     this.setState({
       routeID: nextProps.match.params.id,
       loading: true
-    })
-    if (this.props.match.params.id !== nextProps.match.params.id) {
+    }, () => {
       this.request();
-    }
+      window.scrollTo(0,0)
+    })
   }
 
   onHoverPoster = () => {
