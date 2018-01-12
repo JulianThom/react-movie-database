@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './index.css';
 import PosterInfo from '../PosterInfo'
 import { Link } from 'react-router-dom';
+import missingPoster from '../../assets/images/missingPoster.jpg';
 
 class Poster extends Component{
 
@@ -22,7 +23,7 @@ class Poster extends Component{
           to={`/detailView/${cat}/${id}`}
         >
           <img
-            src={posterURL}
+            src={!this.props.imageStatus ? missingPoster : posterURL}
             alt={value}
           />
           <PosterInfo
