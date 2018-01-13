@@ -3,6 +3,7 @@ import Slider from 'react-slick';
 import './index.css';
 import PosterInfo from '../PosterInfo/';
 import config from '../../config'
+import {randomPage} from '../../helper/'
 import missingBackdrop from '../../assets/images/missingBackdrop.jpg';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -15,8 +16,6 @@ const {
 const {
   baseUrlBackdropW780
 } = config.tmdb.assets;
-
-const randomPage = Math.floor(Math.random() * 100);
 
 class Slideshow extends Component {
 
