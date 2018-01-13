@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './index.css';
 
 import config from '../../config'
+import {rating} from '../../helper/'
+
 import Poster from '../Poster/'
 import RowTitle from '../RowTitle/'
 
@@ -43,7 +45,7 @@ class RowPosters extends Component{
                     posterURL={`${baseUrlPosterW342}${value.poster_path}`}
                     rate={value.vote_average}
                     rating={true}
-                    value={Math.round(value.vote_average)/2}
+                    value={rating(value.vote_average)}
                     id={value.id}
                     cat={movie}
                     imageStatus={value.poster_path}
@@ -60,7 +62,7 @@ class RowPosters extends Component{
                     icon="star"
                     posterURL={`${baseUrlPosterW342}${value.poster_path}`}
                     rating={true}
-                    value={Math.round(value.vote_average)/2}
+                    value={rating(value.vote_average)}
                     id={value.id}
                     cat={tv}
                     imageStatus={value.poster_path}
