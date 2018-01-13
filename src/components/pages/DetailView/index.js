@@ -37,7 +37,7 @@ class DetailView extends Component{
   };
 
   request = () => {
-    axios.get(`
+    const content =  axios.get(`
       ${baseUrlApi}${this.state.routeCat}/${this.state.routeID}
       ?api_key=${apiKey}&language=en-US&append_to_response=videos
       `)
@@ -48,12 +48,9 @@ class DetailView extends Component{
     })
     .catch(error => {
       console.log(error);
-      this.setState({
-        loading: false
-      })
     })
 
-    axios.get(`
+    const similar = axios.get(`
       ${baseUrlApi}${this.state.routeCat}/${this.state.routeID}
       /similar?api_key=${apiKey}&language=en-US&page=1
       `)
@@ -64,12 +61,9 @@ class DetailView extends Component{
     })
     .catch(error => {
       console.log(error);
-      this.setState({
-        loading: false
-      })
     })
 
-    axios.get(`
+    const cast = axios.get(`
       ${baseUrlApi}${this.state.routeCat}/${this.state.routeID}
       /credits?api_key=${apiKey}
       `)
@@ -80,23 +74,22 @@ class DetailView extends Component{
     })
     .catch(error => {
       console.log(error);
-      this.setState({
-        loading: false
-      })
     })
 
-    axios.get(`
+    const reviews = axios.get(`
       ${baseUrlApi}${this.state.routeCat}/${this.state.routeID}
       /reviews?api_key=${apiKey}&language=en-US&page=1
       `)
     .then(response => {
       this.setState({
-        review: response.data.results,
-        loading: false
+        review: response.data.results
       })
     })
     .catch(error => {
       console.log(error);
+    })
+
+    Promise.all([content, similar, cast, reviews]).then(() => {
       this.setState({
         loading: false
       })
