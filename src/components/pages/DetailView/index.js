@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './index.css';
 
 import config from '../../../config.js'
+import {rating} from '../../../helper/'
 import DetailViewLayout from '../../../components/layouts/DetailViewLayout/';
 import RowPosters from '../../../components/RowPosters/'
 import RowReviews from '../../../components/RowReviews/'
@@ -204,7 +205,7 @@ class DetailView extends Component{
                 {title}
               </div>
               <Rating
-                initialRate={Math.round(vote_average)/2}
+                initialRate={rating(vote_average)}
                 empty="fa fa-star-o"
                 full="fa fa-star"
                 readonly
