@@ -17,6 +17,8 @@ const {
   baseUrlBackdropW780
 } = config.tmdb.assets;
 
+console.log(randomPage());
+
 class Slideshow extends Component {
 
   state = {
@@ -25,7 +27,7 @@ class Slideshow extends Component {
   };
 
   componentDidMount() {
-    axios.get(`${baseUrlApi}movie/popular?api_key=${apiKey}&language=en-US&page=${randomPage}`)
+    axios.get(`${baseUrlApi}movie/popular?api_key=${apiKey}&language=en-US&page=${randomPage()}`)
     .then(response => {
       this.setState({
         data: response.data.results
