@@ -3,6 +3,7 @@ import Slider from 'react-slick';
 import './index.css';
 import PosterInfo from '../PosterInfo/';
 import config from '../../config'
+import missingBackdrop from '../../assets/images/missingBackdrop.jpg';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -62,6 +63,9 @@ class Slideshow extends Component {
           {
             this.state.data.map ((value, elem) =>  {
               if ( elem < this.props.contentToDisplay) {
+
+                const backdropUrl = `${baseUrlBackdropW780}${value.backdrop_path}`
+
                 return (
                   <Link
                     key={elem}
@@ -73,7 +77,9 @@ class Slideshow extends Component {
                         ? <PosterInfo value={value.title}/>
                         : ""
                       }
-                      <img src={`${baseUrlBackdropW780}${value.backdrop_path}`} alt={value.title}/>
+                      <img
+                        src={!value.backdrop_path ? missingBackdrop : backdropUrl}
+                        alt={value.title}/>
                     </div>
                   </Link>
                 )
