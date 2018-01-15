@@ -11,6 +11,7 @@
     "react-bootstrap": "^0.31.5",
     "react-dom": "^16.1.1",
     "react-markdown": "^3.1.4",
+    "react-paginate": "^5.0.0",
     "react-rating": "^0.9.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17",
