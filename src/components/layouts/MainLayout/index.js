@@ -9,7 +9,13 @@ class MainLayout extends Component {
     {
       return (
         <div className="wrapperMain">
-          <Slideshow contentToDisplay={8} cat={this.props.slideshowCat} />
+          {
+            this.props.slideshow === 'true' &&
+            <Slideshow
+              contentToDisplay={8}
+              cat={this.props.slideshowCat}
+            />
+          }
           <div className="containerMain">
             {this.props.children}
           </div>
