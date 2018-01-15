@@ -77,7 +77,7 @@ class Home extends Component{
         {
           this.state.loading && <Spinner />
         }
-        <MainLayout slideshowCat={movie}>
+        <MainLayout slideshow='true' slideshowCat={movie}>
           <div className="wrapperRow">
             <RowPosters
               icon="ticket"
