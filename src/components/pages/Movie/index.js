@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import './index.css';
 
+import MainLayout from '../../../components/layouts/MainLayout/'
+
 class Movie extends Component{
 
   render () {
     return (
       <div>
-        Movies Page!
+        <MainLayout slideshow='false'>
+          <div>
+            Movies Page!
+          </div>
+        </MainLayout>
       </div>
     )
   }

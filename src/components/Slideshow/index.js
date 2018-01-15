@@ -17,8 +17,6 @@ const {
   baseUrlBackdropW780
 } = config.tmdb.assets;
 
-console.log(randomPage());
-
 class Slideshow extends Component {
 
   state = {
