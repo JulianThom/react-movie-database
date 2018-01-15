@@ -1,5 +1,6 @@
 .wrapperMain {
   background-color: var(--gray);
+  margin-top: var(--headerFooterHeight);
 }
 
 .containerMain {
