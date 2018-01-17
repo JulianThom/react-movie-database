@@ -32,7 +32,13 @@ class RowPosters extends Component{
 
     return (
       <div className="rows">
-        <RowTitle icon={icon} title={title}/>
+        {
+          icon && title ?
+          <RowTitle
+            icon={icon}
+            title={title}/>
+          : '' 
+        }
         <div className="rowPoster">
           <div className="containerPoster">
             {
