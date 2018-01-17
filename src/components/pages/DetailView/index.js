@@ -239,7 +239,7 @@ class DetailView extends Component{
           </div>
           <div className="wrapperRow">
             {
-              this.state.similar.length >= 1 &&
+              this.state.cast.length >= 1 &&
               <RowPosters
                 icon="user"
                 title="Cast"
