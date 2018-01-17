@@ -20,7 +20,7 @@ const {
   tv
 } = config.categories;
 
-class Movie extends Component{
+class Content extends Component{
 
   state = {
     totalPages: '',
@@ -205,4 +205,4 @@ class Movie extends Component{
   }
 }
 
-export default Movie;
+export default Content;

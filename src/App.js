@@ -4,8 +4,7 @@ import Navigation from './components/Navigation/'
 import Footer from './components/Footer/'
 
 import HomePage from './components/pages/Home/'
-import MoviePage from './components/pages/Movie/'
-import TvPage from './components/pages/Tv/'
+import ContentPage from './components/pages/Content/'
 import PersonPage from './components/pages/Person/'
 import DetailViewPage from './components/pages/DetailView/'
 
@@ -18,8 +17,6 @@ import {
 } from 'react-router-dom';
 
 const {
-  movie,
-  tv,
   person
 } = config.categories;
 
@@ -37,11 +34,11 @@ class App extends Component {
             />
             <Route
               exact path="/:cat/allmovies"
-              component={MoviePage}
+              component={ContentPage}
             />
             <Route
               exact path="/:cat/allseries"
-              component={MoviePage}
+              component={ContentPage}
             />
             <Route
               exact path={`/${person}`}
