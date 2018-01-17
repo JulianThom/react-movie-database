@@ -122,25 +122,25 @@ class Movie extends Component{
                 type="button"
                 className={
                   this.state.btnSortActive && this.state.sort ==='desc'
-                  ? 'btn btn-primary active'
+                  ? 'btn btn-primary disabled'
                   : 'btn btn-primary'
                 }
                 onClick={() => this.handleSort(desc)}
                 >
                   <i className="fa fa-sort-amount-desc">
-                  </i>
+                  </i> Desc
               </button>
               <button
                 type="button"
                 className={
                   this.state.btnSortActive && this.state.sort ==='asc'
-                  ? 'btn btn-primary active'
+                  ? 'btn btn-primary disabled'
                   : 'btn btn-primary'
                 }
                 onClick={() => this.handleSort(asc)}
                 >
                   <i className="fa fa-sort-amount-asc">
-                  </i>
+                  </i> Asc
               </button>
             </div>
           </form>
