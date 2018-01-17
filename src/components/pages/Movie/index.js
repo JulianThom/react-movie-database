@@ -94,9 +94,6 @@ class Movie extends Component{
       movie,
     } = config.categories;
 
-    const desc = 'desc';
-    const asc = 'asc';
-
     return (
       <div>
         {
@@ -125,7 +122,7 @@ class Movie extends Component{
                   ? 'btn btn-primary disabled'
                   : 'btn btn-primary'
                 }
-                onClick={() => this.handleSort(desc)}
+                onClick={() => this.handleSort('desc')}
                 >
                   <i className="fa fa-sort-amount-desc">
                   </i> Desc
@@ -137,7 +134,7 @@ class Movie extends Component{
                   ? 'btn btn-primary disabled'
                   : 'btn btn-primary'
                 }
-                onClick={() => this.handleSort(asc)}
+                onClick={() => this.handleSort('asc')}
                 >
                   <i className="fa fa-sort-amount-asc">
                   </i> Asc
