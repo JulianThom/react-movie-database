@@ -238,13 +238,16 @@ class DetailView extends Component{
             </p>
           </div>
           <div className="wrapperRow">
-            <RowPosters
-              icon="user"
-              title="Cast"
-              contentToDisplay={6}
-              type={config.categories.person}
-              data={this.state.cast}
-            />
+            {
+              this.state.similar.length >= 1 &&
+              <RowPosters
+                icon="user"
+                title="Cast"
+                contentToDisplay={6}
+                type={config.categories.person}
+                data={this.state.cast}
+              />
+            }
             {
               this.state.similar.length >= 1 &&
               <RowPosters
