@@ -1,3 +1,7 @@
 .wrapperPagination {
   text-align: center;
 }
+
+.form-inline button {
+  margin-left: 10px;
+}
