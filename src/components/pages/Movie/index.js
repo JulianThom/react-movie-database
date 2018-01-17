@@ -15,6 +15,11 @@ const {
   apiKey
 } = config.tmdb;
 
+const {
+  movie,
+  tv
+} = config.categories;
+
 class Movie extends Component{
 
   state = {
@@ -25,14 +30,28 @@ class Movie extends Component{
     select: 'popularity',
     sort: 'desc',
     btnSortActive: 'active',
+    routeCat: this.props.match.params.cat,
+  }
+
+  requestType = () => {
+    if (this.state.routeCat === movie) {
+      return (
+          `${baseUrlApi}discover/movie?api_key=${apiKey}&language=en-US
+          &sort_by=${this.state.select}.${this.state.sort}&include_adult=false&
+          include_video=false&page=${this.state.offset}`
+      )
+    }else if (this.state.routeCat === tv) {
+      return (
+        `${baseUrlApi}discover/tv?api_key=${apiKey}&language=en-US
+        &sort_by=${this.state.select}.${this.state.sort}&page=${this.state.offset}
+        &timezone=America%2FNew_York
+        &include_null_first_air_dates=false`
+      )
+    }
   }
 
   request = () => {
-    axios.get(`
-      ${baseUrlApi}discover/movie?api_key=${apiKey}&language=en-US
-      &sort_by=${this.state.select}.${this.state.sort}&include_adult=false&
-      include_video=false&page=${this.state.offset}
-      `)
+    axios.get(this.requestType())
     .then(response => {
       this.setState({
         totalPages: response.data.total_pages,
@@ -91,11 +110,8 @@ class Movie extends Component{
   }
 
   render () {
-    const {
-      movie,
-    } = config.categories;
 
-    const movieSortBy = config.tmdb.sortMovie;
+    const sortByConfig = this.state.routeCat === movie ? config.tmdb.sortMovie : config.tmdb.sortTv
 
     return (
       <div>
@@ -103,7 +119,7 @@ class Movie extends Component{
           this.state.loading && <Spinner />
         }
         <MainLayout slideshow='false'>
-            <form className="form-inline pull-right">
+            <form className="form-inline pull-right selectFilter">
               <div className="form-group">
               <select
                 className="form-control"
@@ -111,17 +127,26 @@ class Movie extends Component{
                 onChange={this.handleChange}
               >
                 {
-                  Object.keys(movieSortBy).map(function(keyName, keyIndex) {
-                    return <option key={keyIndex} value={keyName}>{movieSortBy[keyName]}</option>
+                  Object.keys(sortByConfig).map(function(keyName, keyIndex) {
+                    return <option key={keyIndex} value={keyName}>{sortByConfig[keyName]}</option>
                   })
                 }
               </select>
               <button
                 type="button"
-                className={
+                className=
+                {
+                  `btn btn-primary ${
+                    this.state.btnSortActive && this.state.sort ==='desc'
+                    ? 'disabled'
+                    : ''
+                  }`
+                }
+                disabled=
+                {
                   this.state.btnSortActive && this.state.sort ==='desc'
-                  ? 'btn btn-primary disabled'
-                  : 'btn btn-primary'
+                  ? 'true'
+                  : ''
                 }
                 onClick={() => this.handleSort('desc')}
                 >
@@ -130,10 +155,19 @@ class Movie extends Component{
               </button>
               <button
                 type="button"
-                className={
+                className=
+                {
+                  `btn btn-primary ${
+                    this.state.btnSortActive && this.state.sort ==='asc'
+                    ? 'disabled'
+                    : ''
+                  }`
+                }
+                disabled=
+                {
                   this.state.btnSortActive && this.state.sort ==='asc'
-                  ? 'btn btn-primary disabled'
-                  : 'btn btn-primary'
+                  ? 'true'
+                  : ''
                 }
                 onClick={() => this.handleSort('asc')}
                 >
@@ -144,10 +178,8 @@ class Movie extends Component{
           </form>
           <div className="wrapperRow">
             <RowPosters
-              icon="ticket"
-              title="Movies"
               contentToDisplay={18}
-              type={movie}
+              type={this.state.routeCat === 'movie' ? movie : tv}
               data={this.state.data}
             />
           <div className="wrapperPagination">
