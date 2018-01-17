@@ -24,7 +24,7 @@ class Movie extends Component{
     loading: true,
     select: 'popularity',
     sort: 'desc',
-    btnSortActive: 'active'
+    btnSortActive: 'active',
   }
 
   request = () => {
@@ -73,7 +73,8 @@ class Movie extends Component{
 
   handleChange = (event) => {
     this.setState({
-      select: event.target.value
+      select: event.target.value,
+      offset: 1,
     }, () => {
       this.request();
     })
@@ -94,6 +95,8 @@ class Movie extends Component{
       movie,
     } = config.categories;
 
+    const movieSortBy = config.tmdb.sortMovie;
+
     return (
       <div>
         {
@@ -107,13 +110,11 @@ class Movie extends Component{
                 style={{'width':'auto'}}
                 onChange={this.handleChange}
               >
-                <option value="popularity">Popularity</option>
-                <option value="release_date">Release date</option>
-                <option value="revenue">Revenue</option>
-                <option value="primary_release_date">Primary release date</option>
-                <option value="original_title">Original title</option>
-                <option value="vote_average">Vote average</option>
-                <option value="vote_count">Vote count</option>
+                {
+                  Object.keys(movieSortBy).map(function(keyName, keyIndex) {
+                    return <option key={keyIndex} value={keyName}>{movieSortBy[keyName]}</option>
+                  })
+                }
               </select>
               <button
                 type="button"
@@ -162,6 +163,7 @@ class Movie extends Component{
                 containerClassName={"pagination"}
                 subContainerClassName={"pages pagination"}
                 activeClassName={"active"}
+                forcePage={this.state.offset-1}
               />
             </div>
           </div>
