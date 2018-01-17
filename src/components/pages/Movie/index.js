@@ -159,8 +159,8 @@ class Movie extends Component{
                 breakLabel={<a href="">...</a>}
                 breakClassName={"break-me"}
                 pageCount={this.totalPages()}
-                marginPagesDisplayed={2}
-                pageRangeDisplayed={5}
+                marginPagesDisplayed={1}
+                pageRangeDisplayed={9}
                 onPageChange={this.handlePageClick}
                 containerClassName={"pagination"}
                 subContainerClassName={"pages pagination"}
