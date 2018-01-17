@@ -22,6 +22,11 @@ export default {
       original_title: 'Original title',
       vote_average: 'Vote Average',
       vote_count: 'Vote Count'
+    },
+    sortTv: {
+      popularity: 'Popularity',
+      vote_average: 'Vote Average',
+      first_air_date: 'First air date'
     }
   },
   trailer: {
