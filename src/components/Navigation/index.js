@@ -33,7 +33,7 @@ class Navigation extends Component {
               <li>
                 <NavLink
                   activeClassName="active"
-                  to={`/${movie}`}
+                  to={`/${movie}/allmovies`}
                 >
                   <i className="fa fa-ticket"></i> Movies
                 </NavLink>
@@ -41,7 +41,7 @@ class Navigation extends Component {
               <li>
                 <NavLink
                   activeClassName="active"
-                  to={`/${tv}`}
+                  to={`/${tv}/allseries`}
                 >
                   <i className="fa fa-television"></i> Series
                 </NavLink>

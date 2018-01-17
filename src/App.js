@@ -36,12 +36,12 @@ class App extends Component {
               component={HomePage}
             />
             <Route
-              exact path={`/${movie}`}
+              exact path="/:cat/allmovies"
               component={MoviePage}
             />
             <Route
-              exact path={`/${tv}`}
-              component={TvPage}
+              exact path="/:cat/allseries"
+              component={MoviePage}
             />
             <Route
               exact path={`/${person}`}
