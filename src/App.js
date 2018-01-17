@@ -33,11 +33,11 @@ class App extends Component {
               component={HomePage}
             />
             <Route
-              exact path="/:cat/allmovies"
+              path="/:cat/allmovies"
               component={ContentPage}
             />
             <Route
-              exact path="/:cat/allseries"
+              path="/:cat/allseries"
               component={ContentPage}
             />
             <Route
