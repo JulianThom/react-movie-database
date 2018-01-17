@@ -35,18 +35,18 @@ class Content extends Component{
 
   requestType = () => {
     if (this.state.routeCat === movie) {
-      return (
-          `${baseUrlApi}discover/movie?api_key=${apiKey}&language=en-US
-          &sort_by=${this.state.select}.${this.state.sort}&include_adult=false&
-          include_video=false&page=${this.state.offset}`
-      )
+      return (`
+        ${baseUrlApi}discover/movie?api_key=${apiKey}&language=en-US
+        &sort_by=${this.state.select}.${this.state.sort}&include_adult=false&
+        include_video=false&page=${this.state.offset}
+      `)
     }else if (this.state.routeCat === tv) {
-      return (
-        `${baseUrlApi}discover/tv?api_key=${apiKey}&language=en-US
+      return (`
+        ${baseUrlApi}discover/tv?api_key=${apiKey}&language=en-US
         &sort_by=${this.state.select}.${this.state.sort}&page=${this.state.offset}
         &timezone=America%2FNew_York
-        &include_null_first_air_dates=false`
-      )
+        &include_null_first_air_dates=false
+      `)
     }
   }
 

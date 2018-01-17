@@ -26,9 +26,9 @@ class Slideshow extends Component {
 
   componentDidMount() {
     axios.get(`
-        ${baseUrlApi}movie/popular?api_key=${apiKey}&
-        language=en-US&page=${randomPage()}&include_adult=false
-      `)
+      ${baseUrlApi}movie/popular?api_key=${apiKey}&
+      language=en-US&page=${randomPage()}&include_adult=false
+    `)
     .then(response => {
       this.setState({
         data: response.data.results

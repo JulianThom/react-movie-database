@@ -77,10 +77,11 @@ class DetailView extends Component{
       console.log(error);
     })
 
-    const reviews = axios.get(`
+    const reviews =
+    axios.get(`
       ${baseUrlApi}${this.state.routeCat}/${this.state.routeID}
       /reviews?api_key=${apiKey}&language=en-US&page=1
-      `)
+    `)
     .then(response => {
       this.setState({
         review: response.data.results

@@ -23,9 +23,12 @@ class Home extends Component{
   };
 
   componentDidMount() {
-    const bestMovies = axios.get(`${baseUrlApi}discover/movie?api_key=${apiKey}&language=en-US
-                &sort_by=vote_average.desc&include_adult=false&include_video=false&page=1
-                &primary_release_year=2017&vote_count.gte=1000`)
+    const bestMovies =
+    axios.get(`
+        ${baseUrlApi}discover/movie?api_key=${apiKey}&language=en-US
+        &sort_by=vote_average.desc&include_adult=false&include_video=false&page=1
+        &primary_release_year=2017&vote_count.gte=1000
+    `)
     .then(response => {
       this.setState({
         dataMovie: response.data.results
@@ -35,9 +38,12 @@ class Home extends Component{
       console.log(error);
     })
 
-    const bestTvs = axios.get(`${baseUrlApi}discover/tv?api_key=${apiKey}&language=en-US
+    const bestTvs =
+    axios.get(`
+      ${baseUrlApi}discover/tv?api_key=${apiKey}&language=en-US
       &sort_by=vote_average.desc&first_air_date_year=2017&page=1&timezone=America
-      %2FNew_York&vote_count.gte=50&include_null_first_air_dates=false`)
+      %2FNew_York&vote_count.gte=50&include_null_first_air_dates=false
+    `)
     .then(response => {
       this.setState({
         dataTV: response.data.results
@@ -47,7 +53,10 @@ class Home extends Component{
       console.log(error);
     })
 
-    const bestPersons = axios.get(`${baseUrlApi}person/popular?api_key=${apiKey}&language=en-US&page=1`)
+    const bestPersons =
+    axios.get(`
+      ${baseUrlApi}person/popular?api_key=${apiKey}&language=en-US&page=1
+    `)
     .then(response => {
       this.setState({
         dataPerson: response.data.results,
