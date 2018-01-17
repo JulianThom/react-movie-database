@@ -13,6 +13,15 @@ export default {
       baseUrlPosterW342: 'http://image.tmdb.org/t/p/w342/',
       baseUrlPosterW780: 'http://image.tmdb.org/t/p/780/',
       baseUrlProfileW185: 'http://image.tmdb.org/t/p/w185/'
+    },
+    sortMovie: {
+      popularity: 'Popularity',
+      release_date: 'Release Date',
+      revenue: 'Revenue',
+      primary_release_date: 'Primary Release Date',
+      original_title: 'Original title',
+      vote_average: 'Vote Average',
+      vote_count: 'Vote Count'
     }
   },
   trailer: {
