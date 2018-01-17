@@ -1,0 +1,11 @@
+.wrapperPagination {
+  text-align: center;
+}
+
+.selectFilter {
+  margin-bottom: 20px
+}
+
+.selectFilter button {
+  margin-left: 10px;
+}
