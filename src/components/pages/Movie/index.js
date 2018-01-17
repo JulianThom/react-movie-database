@@ -22,13 +22,15 @@ class Movie extends Component{
     data: [],
     offset: 1,
     loading: true,
-    select: 'popularity.desc'
+    select: 'popularity',
+    sort: 'desc',
+    btnSortActive: 'active'
   }
 
   request = () => {
     axios.get(`
       ${baseUrlApi}discover/movie?api_key=${apiKey}&language=en-US
-      &sort_by=${this.state.select}&include_adult=false&
+      &sort_by=${this.state.select}.${this.state.sort}&include_adult=false&
       include_video=false&page=${this.state.offset}
       `)
     .then(response => {
@@ -77,10 +79,23 @@ class Movie extends Component{
     })
   }
 
+  handleSort = (arg) => {
+    this.setState({
+      sort: arg,
+      offset: 1,
+      btnSortActive: 'active'
+    }, () => {
+      this.request();
+    })
+  }
+
   render () {
     const {
       movie,
     } = config.categories;
+
+    const desc = 'desc';
+    const asc = 'asc';
 
     return (
       <div>
@@ -88,20 +103,47 @@ class Movie extends Component{
           this.state.loading && <Spinner />
         }
         <MainLayout slideshow='false'>
-            <select
-              className="form-control pull-right"
-              style={{'width':'auto'}}
-              onChange={this.handleChange}
-            >
-              <option value="" selected disabled>Filter by</option>
-              <option value="popularity.desc">Popularity</option>
-              <option value="release_date.desc">Release date</option>
-              <option value="revenue.desc">Revenue</option>
-              <option value="primary_release_date.desc">Primary release date</option>
-              <option value="original_title.desc">Original title</option>
-              <option value="vote_average.desc">Vote average</option>
-              <option value="vote_count.desc">Vote count</option>
-            </select>
+            <form className="form-inline pull-right">
+              <div className="form-group">
+              <select
+                className="form-control"
+                style={{'width':'auto'}}
+                onChange={this.handleChange}
+              >
+                <option value="popularity">Popularity</option>
+                <option value="release_date">Release date</option>
+                <option value="revenue">Revenue</option>
+                <option value="primary_release_date">Primary release date</option>
+                <option value="original_title">Original title</option>
+                <option value="vote_average">Vote average</option>
+                <option value="vote_count">Vote count</option>
+              </select>
+              <button
+                type="button"
+                className={
+                  this.state.btnSortActive && this.state.sort ==='desc'
+                  ? 'btn btn-primary active'
+                  : 'btn btn-primary'
+                }
+                onClick={() => this.handleSort(desc)}
+                >
+                  <i className="fa fa-sort-amount-desc">
+                  </i>
+              </button>
+              <button
+                type="button"
+                className={
+                  this.state.btnSortActive && this.state.sort ==='asc'
+                  ? 'btn btn-primary active'
+                  : 'btn btn-primary'
+                }
+                onClick={() => this.handleSort(asc)}
+                >
+                  <i className="fa fa-sort-amount-asc">
+                  </i>
+              </button>
+            </div>
+          </form>
           <div className="wrapperRow">
             <RowPosters
               icon="ticket"
