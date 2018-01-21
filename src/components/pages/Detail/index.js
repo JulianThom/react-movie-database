@@ -7,6 +7,7 @@ import DetailLayout from '../../../components/layouts/DetailLayout/';
 import RowPosters from '../../../components/RowPosters/'
 import RowReviews from '../../../components/RowReviews/'
 import Spinner from '../../../components/Spinner/'
+import HeaderDetail from '../../../components/HeaderDetail/'
 
 import axios from 'axios';
 import YouTube from 'react-youtube';
@@ -180,59 +181,19 @@ class Detail extends Component{
         <DetailLayout
           trailerIsDisplayed={this.state.showTrailer}
           backdropImage={`${baseUrlBackdropW1280}${backdrop_path}`}
-          >
-          <div className="wrapperInfo">
-            <div className="poster">
-              <a
-                className={this.state.hasTrailer ? 'posterLinkHover' : 'posterLink'}
-                onClick={this.onClickPoster}
-                onMouseOver={this.onHoverPoster}
-                target="blank"
-              >
-                <img
-                  src={`${baseUrlPosterW342}${poster_path}`}
-                  alt={title}
-                />
-                {
-                  this.state.hasTrailer &&
-                  <i
-                    className="iconPlay fa fa-play-circle fa-5x">
-                  </i>
-                }
-              </a>
-            </div>
-            <div className="infoDetail">
-              <div className="title">
-                {title}
-              </div>
-              <Rating
-                initialRate={rating(vote_average)}
-                empty="fa fa-star-o"
-                full="fa fa-star"
-                readonly
-                className="ratingDetail"
-                />
-              <div className="secondaryInfo">
-                <p>
-                  Released on {release_date}
-                </p>
-                <p>
-                  Duration: {runtime} min.
-                </p>
-                <ul className="genres">
-                  {
-                    genres && genres.map(function(value, elem) {
-                      if ( elem <= 4 ) {
-                        return (
-                          <li key={elem}>{value.name}</li>
-                        )
-                      }
-                    })
-                  }
-                </ul>
-              </div>
-            </div>
-          </div>
+        >
+          <HeaderDetail
+            hasTrailer={this.state.hasTrailer}
+            posterClick={this.onClickPoster}
+            posterOnMouseOver={this.onHoverPoster}
+            srcPoster={`${baseUrlPosterW342}${poster_path}`}
+            title={title}
+            hasTrailer={this.state.hasTrailer}
+            rating={rating(vote_average)}
+            releaseDate={release_date}
+            genre={genres}
+            runtime={runtime}
+          />
           <div className="overview">
             <p>
               {overview}
