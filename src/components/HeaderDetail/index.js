@@ -12,8 +12,8 @@ class HeaderDetail extends Component {
         <div className="poster">
           <a
             className={this.props.hasTrailer ? 'posterLinkHover' : 'posterLink'}
-            onClick={this.props.onClickPoster}
-            onMouseOver={this.props.onHoverPoster}
+            onClick={this.props.posterClick}
+            onMouseOver={this.props.posterOnMouseOver}
             target="blank"
           >
             <img
