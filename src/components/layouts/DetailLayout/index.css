@@ -1,9 +1,9 @@
-.wrapperDetailView {
+.wrapperDetail {
   width: 100%;
   min-height: calc(100vh - var(--headerFooterHeight));
 }
 
-.wrapperDetailViewOpacity {
+.wrapperDetailOpacity {
   width: 100%;
   min-height: calc(100vh - var(--headerFooterHeight));
   opacity: 0.3;
@@ -19,7 +19,7 @@
   position: absolute;
 }
 
-.wrapperDetailView .layer .containerDetailView {
+.wrapperDetail .layer .containerDetail {
   background-color: #00000000;
   width: 1000px;
   min-height: calc(100vh - var(--headerFooterHeight));

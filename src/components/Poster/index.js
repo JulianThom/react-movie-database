@@ -20,7 +20,7 @@ class Poster extends Component{
     return (
       <div className="poster">
         <Link
-          to={`/detailView/${cat}/${id}`}
+          to={`/detail/${cat}/${id}`}
         >
           <img
             src={!this.props.imageStatus ? missingPoster : posterURL}

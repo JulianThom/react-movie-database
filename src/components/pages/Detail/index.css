@@ -39,7 +39,7 @@
   display: block;
 }
 
-.infoDetailView {
+.infoDetail {
   width: 84%;
   padding: 0 20px;
   float: left;
@@ -53,7 +53,7 @@
   width: 100%;
 }
 
-.ratingDetailView {
+.ratingDetail {
   font-size: 22px;
   color: white;
   padding-bottom: 10px;
@@ -105,7 +105,7 @@
   float: left;
 }
 
-.containerDetailView h3 {
+.containerDetail h3 {
   color: var(--white);
 }
 

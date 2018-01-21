@@ -3,7 +3,7 @@ import './index.css';
 
 import config from '../../../config.js'
 import {rating} from '../../../helper/'
-import DetailViewLayout from '../../../components/layouts/DetailViewLayout/';
+import DetailLayout from '../../../components/layouts/DetailLayout/';
 import RowPosters from '../../../components/RowPosters/'
 import RowReviews from '../../../components/RowReviews/'
 import Spinner from '../../../components/Spinner/'
@@ -23,7 +23,7 @@ const {
   baseUrlPosterW342
 } = config.tmdb.assets;
 
-class DetailView extends Component{
+class Detail extends Component{
 
   state = {
     loading: true,
@@ -177,7 +177,7 @@ class DetailView extends Component{
             />
           </div>
         }
-        <DetailViewLayout
+        <DetailLayout
           trailerIsDisplayed={this.state.showTrailer}
           backdropImage={`${baseUrlBackdropW1280}${backdrop_path}`}
           >
@@ -201,7 +201,7 @@ class DetailView extends Component{
                 }
               </a>
             </div>
-            <div className="infoDetailView">
+            <div className="infoDetail">
               <div className="title">
                 {title}
               </div>
@@ -210,7 +210,7 @@ class DetailView extends Component{
                 empty="fa fa-star-o"
                 full="fa fa-star"
                 readonly
-                className="ratingDetailView"
+                className="ratingDetail"
                 />
               <div className="secondaryInfo">
                 <p>
@@ -266,10 +266,10 @@ class DetailView extends Component{
               />
             }
           </div>
-        </DetailViewLayout>
+        </DetailLayout>
       </div>
     )
   }
 }
 
-export default DetailView;
+export default Detail;

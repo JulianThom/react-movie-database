@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './index.css';
 
-class DetailViewLayout extends Component {
-
+class DetailLayout extends Component {
 
 render ()
   {
@@ -20,11 +19,11 @@ render ()
 
     return (
       <div
-        className="wrapperDetailView"
+        className="wrapperDetail"
         style={this.props.trailerIsDisplayed === true ? {opacity:0.2} : {opacity:1}}
         >
         <div className="layer">
-          <div className="containerDetailView">
+          <div className="containerDetail">
             {this.props.children}
           </div>
           <div
@@ -38,4 +37,4 @@ render ()
   }
 }
 
-export default DetailViewLayout;
+export default DetailLayout;

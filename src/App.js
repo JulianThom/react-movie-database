@@ -6,7 +6,7 @@ import Footer from './components/Footer/'
 import HomePage from './components/pages/Home/'
 import ContentPage from './components/pages/Content/'
 import PersonPage from './components/pages/Person/'
-import DetailViewPage from './components/pages/DetailView/'
+import DetailPage from './components/pages/Detail/'
 
 import './App.css'
 import config from './config'
@@ -45,8 +45,8 @@ class App extends Component {
               component={PersonPage}
             />
             <Route
-              path="/detailView/:cat/:id"
-              component={DetailViewPage}
+              path="/detail/:cat/:id"
+              component={DetailPage}
             />
           <Footer />
         </div>

@@ -71,7 +71,7 @@ class Slideshow extends Component {
                 return (
                   <Link
                     key={elem}
-                    to={`/detailView/${cat}/${value.id}`}
+                    to={`/Detail/${cat}/${value.id}`}
                   >
                     <div>
                       {
