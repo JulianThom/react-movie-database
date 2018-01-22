@@ -26,7 +26,7 @@ class RowPosters extends Component{
       icon,
       title,
       contentToDisplay,
-      type,
+      cat,
       data
     } = this.props;
 
@@ -37,12 +37,12 @@ class RowPosters extends Component{
           <RowTitle
             icon={icon}
             title={title}/>
-          : '' 
+          : ''
         }
         <div className="rowPoster">
           <div className="containerPoster">
             {
-              type === `${movie}` &&
+              cat === `${movie}` &&
               data.slice(0, contentToDisplay).map(function(value, elem) {
                 return (
                   <Poster
@@ -60,7 +60,7 @@ class RowPosters extends Component{
               })
             }
             {
-              this.props.type === `${tv}` &&
+              this.props.cat === `${tv}` &&
               this.props.data.slice(0, contentToDisplay).map(function(value, elem) {
                 return (
                   <Poster
@@ -77,7 +77,7 @@ class RowPosters extends Component{
               })
             }
             {
-              this.props.type === `${person}` &&
+              this.props.cat === `${person}` &&
               this.props.data.slice(0, contentToDisplay).map(function(value, elem) {
                 return (
                   <Poster
