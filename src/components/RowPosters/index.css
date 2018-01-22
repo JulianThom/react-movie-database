@@ -6,20 +6,25 @@
   margin-bottom: 0px;
 }
 
-.containerPoster {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-}
-
 .rowPoster {
   display: flex;
 }
 
 .rowPoster .poster {
-  flex-grow: 1;
-  flex: 1 1 auto;
   position: relative;
+  margin-right: 8px;
+  margin-bottom: 10px;
+  background-color: gray;
+  display: inline-block;
+  float: left;
+}
+
+.rowPoster .poster:nth-child(6n) {
+    margin-right: 0px;
+}
+
+.rowPoster .poster:nth-last-child(-n+6) {
+    margin-bottom: 0px;
 }
 
 .wrapperRow {
