@@ -1,0 +1,33 @@
+.wrapperItemMeta {
+  width: 100%;
+  float: left;
+  color: var(--white);
+  font-size: 18px;
+  font-weight: 100;
+  margin: 0;
+}
+
+.wrapperItemMeta p {
+  margin: 0;
+}
+
+.itemList {
+  padding: 0;
+}
+
+.itemList:first-child::after {
+  content: "";
+}
+
+.itemList::after {
+  content: ", ";
+  white-space: pre;
+}
+
+.itemList:last-child::after {
+  content: "";
+}
+
+.labelItem {
+  color: var(--grayBootstrap);
+}
