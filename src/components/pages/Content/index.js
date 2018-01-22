@@ -179,7 +179,7 @@ class Content extends Component{
           <div className="wrapperRow">
             <RowPosters
               contentToDisplay={18}
-              type={this.state.routeCat === 'movie' ? movie : tv}
+              cat={this.state.routeCat === 'movie' ? movie : tv}
               data={this.state.data}
             />
           <div className="wrapperPagination">
