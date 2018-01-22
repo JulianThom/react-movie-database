@@ -7,7 +7,7 @@ import DetailLayout from '../../../components/layouts/DetailLayout/';
 import RowPosters from '../../../components/RowPosters/'
 import RowReviews from '../../../components/RowReviews/'
 import Spinner from '../../../components/Spinner/'
-import HeaderDetail from '../../../components/HeaderDetail/'
+import Card from '../../../components/Card/'
 
 import axios from 'axios';
 import YouTube from 'react-youtube';
@@ -23,6 +23,12 @@ const {
   baseUrlBackdropW1280,
   baseUrlPosterW342
 } = config.tmdb.assets;
+
+const {
+  movie,
+  tv,
+  person
+} = config.categories;
 
 class Detail extends Component{
 
@@ -92,6 +98,21 @@ class Detail extends Component{
       console.log(error);
     })
 
+    const seasons =
+    axios.get(`
+      ${baseUrlApi}${this.state.routeCat}/${this.state.routeID}/season/1
+      ?api_key=${apiKey}&language=en-US
+
+    `)
+    .then(response => {
+      this.setState({
+        seasons: response.data
+      })
+    })
+    .catch(error => {
+      console.log(error);
+    })
+
     Promise.all([content, similar, cast, reviews]).then(() => {
       this.setState({
         loading: false
@@ -155,8 +176,17 @@ class Detail extends Component{
       runtime,
       overview,
       title,
-      videos
+      name,
+      videos,
+      created_by,
+      first_air_date,
+      number_of_seasons,
+      number_of_episodes,
+      networks,
+      seasons
     } = this.state.data;
+
+    console.log(this.state.data);
 
     return (
       <div>
@@ -182,17 +212,24 @@ class Detail extends Component{
           trailerIsDisplayed={this.state.showTrailer}
           backdropImage={`${baseUrlBackdropW1280}${backdrop_path}`}
         >
-          <HeaderDetail
+          <Card
             hasTrailer={this.state.hasTrailer}
             posterClick={this.onClickPoster}
             posterOnMouseOver={this.onHoverPoster}
             srcPoster={`${baseUrlPosterW342}${poster_path}`}
-            title={title}
-            hasTrailer={this.state.hasTrailer}
+            title={this.state.routeCat === movie ? title : name}
             rating={rating(vote_average)}
             releaseDate={release_date}
-            genre={genres}
+            genres={genres}
             runtime={runtime}
+            cat={this.state.routeCat}
+            createdBy={created_by}
+            firstAirDate={first_air_date}
+            totalSeasons={number_of_seasons}
+            totalEpisodes={number_of_episodes}
+            networks={networks}
+            airDate=''
+            numberofEpisodes=''
           />
           <div className="overview">
             <p>
@@ -201,12 +238,22 @@ class Detail extends Component{
           </div>
           <div className="wrapperRow">
             {
+              !!seasons &&
+              <RowPosters
+                icon="file-video-o"
+                title="Seasons"
+                contentToDisplay={seasons.length}
+                cat={this.state.routeCat}
+                data={seasons}
+              />
+            }
+            {
               this.state.cast.length >= 1 &&
               <RowPosters
                 icon="user"
                 title="Cast"
                 contentToDisplay={6}
-                type={config.categories.person}
+                cat={config.categories.person}
                 data={this.state.cast}
               />
             }
@@ -216,7 +263,7 @@ class Detail extends Component{
                 icon="chain"
                 title="Similars"
                 contentToDisplay={6}
-                type={this.state.routeCat}
+                cat={this.state.routeCat}
                 data={this.state.similar}
               />
             }
