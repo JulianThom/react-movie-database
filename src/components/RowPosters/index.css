@@ -23,10 +23,6 @@
     margin-right: 0px;
 }
 
-.rowPoster .poster:nth-last-child(-n+6) {
-    margin-bottom: 0px;
-}
-
 .wrapperRow {
   display: inline-block;
 }
