@@ -92,21 +92,21 @@ class Home extends Component{
               icon="ticket"
               title="Best movies of 2017"
               contentToDisplay={18}
-              type={movie}
+              cat={movie}
               data={this.state.dataMovie}
             />
             <RowPosters
               icon="television"
               title="Best series of 2017"
               contentToDisplay={18}
-              type={tv}
+              cat={tv}
               data={this.state.dataTV}
             />
             <RowPosters
               icon="user"
               title="Most popular actors"
               contentToDisplay={18}
-              type={person}
+              cat={person}
               data={this.state.dataPerson}
             />
           </div>
