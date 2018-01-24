@@ -11,8 +11,7 @@
 
       const {
         movie,
-        tv,
-        person
+        tv
       } = config.categories;
 
       const {
@@ -49,7 +48,7 @@
             <Rating
               initialRate={this.props.rating}
               empty={ratingEmpty}
-              full={ratingEmpty}
+              full={ratingFilled}
               readonly
               className="ratingDetail"
               />
