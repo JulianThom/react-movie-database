@@ -89,21 +89,21 @@ class Home extends Component{
         <MainLayout slideshow='true' slideshowCat={movie}>
           <div className="wrapperRow">
             <RowPosters
-              icon="ticket"
+              icon={config.icons.movie}
               title="Best movies of 2017"
               contentToDisplay={18}
               cat={movie}
               data={this.state.dataMovie}
             />
             <RowPosters
-              icon="television"
+              icon={config.icons.tv}
               title="Best series of 2017"
               contentToDisplay={18}
               cat={tv}
               data={this.state.dataTV}
             />
             <RowPosters
-              icon="user"
+              icon={config.icons.person}
               title="Most popular actors"
               contentToDisplay={18}
               cat={person}
