@@ -1,8 +1,8 @@
 .poster {
-  width: 150px;
-  height: 225px;
+  overflow: hidden;
 }
 
 .poster img {
-  width: 100%;
+  width: 150px;
+  height: 225px;
 }
