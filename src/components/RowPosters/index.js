@@ -43,25 +43,27 @@ class RowPosters extends Component{
           <div className="containerPoster">
             {
               cat === `${movie}` &&
-              data.slice(0, contentToDisplay).map(function(value, elem) {
-                return (
-                  <Poster
-                    key={elem}
-                    icon="star"
-                    posterURL={`${baseUrlPosterW342}${value.poster_path}`}
-                    rate={value.vote_average}
-                    rating={true}
-                    value={rating(value.vote_average)}
-                    id={value.id}
-                    cat={movie}
-                    imageStatus={value.poster_path}
-                  />
-                )
+              data.map(function(value, elem) {
+                if ( elem < contentToDisplay ) {
+                  return (
+                    <Poster
+                      key={elem}
+                      icon="star"
+                      posterURL={`${baseUrlPosterW342}${value.poster_path}`}
+                      rate={value.vote_average}
+                      rating={true}
+                      value={rating(value.vote_average)}
+                      id={value.id}
+                      cat={movie}
+                      imageStatus={value.poster_path}
+                    />
+                  )
+                }
               })
             }
             {
-              this.props.cat === `${tv}` &&
-              this.props.data.slice(0, contentToDisplay).map(function(value, elem) {
+              cat === `${tv}` &&
+              data.slice(0, contentToDisplay).map(function(value, elem) {
                 return (
                   <Poster
                     key={elem}
@@ -77,8 +79,8 @@ class RowPosters extends Component{
               })
             }
             {
-              this.props.cat === `${person}` &&
-              this.props.data.slice(0, contentToDisplay).map(function(value, elem) {
+              cat === `${person}` &&
+              data.slice(0, contentToDisplay).map(function(value, elem) {
                 return (
                   <Poster
                     key={elem}
