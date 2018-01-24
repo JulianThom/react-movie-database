@@ -14,7 +14,8 @@ class Poster extends Component{
       posterURL,
       value,
       icon,
-      rating
+      rating,
+      altAttr
     } = this.props;
 
     return (
@@ -24,7 +25,7 @@ class Poster extends Component{
         >
           <img
             src={!this.props.imageStatus ? missingPoster : posterURL}
-            alt={value}
+            alt={altAttr}
           />
           <PosterInfo
             icon={icon}

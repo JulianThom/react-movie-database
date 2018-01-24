@@ -118,6 +118,7 @@ class Home extends Component{
               rowPostersPopulate.map((value, elem) => {
                 return (
                   <RowPosters
+                    key={elem}
                     icon={value.icon}
                     title={value.title}
                     contentToDisplay={value.display}

@@ -110,7 +110,7 @@ class Detail extends Component{
       console.log(error);
     })
 
-    Promise.all([content, similar, cast, reviews]).then(() => {
+    Promise.all([content, similar, cast, reviews, seasons]).then(() => {
       this.setState({
         loading: false
       })
@@ -180,10 +180,11 @@ class Detail extends Component{
       number_of_seasons,
       number_of_episodes,
       networks,
-      seasons
+      seasons,
+      altAttr
     } = this.state.data;
 
-    console.log(this.state.data);
+    console.log(seasons);
 
     return (
       <div>
@@ -252,6 +253,7 @@ class Detail extends Component{
                 contentToDisplay={6}
                 cat={config.categories.person}
                 data={this.state.cast}
+                altAttr={altAttr}
               />
             }
             {
@@ -262,6 +264,7 @@ class Detail extends Component{
                 contentToDisplay={6}
                 cat={this.state.routeCat}
                 data={this.state.similar}
+                altAttr={altAttr}
               />
             }
             {

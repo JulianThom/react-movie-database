@@ -12,6 +12,7 @@ class RowPosters extends Component{
   render () {
 
     const {
+      movie,
       person
     } = config.categories;
 
@@ -56,10 +57,7 @@ class RowPosters extends Component{
                        }
                       rate={value.vote_average}
                       rating={cat === person ? false : true}
-                      value={
-                        cat === person
-                         ? value.name
-                         : rating(value.vote_average)
+                      value={cat === person ? value.name : rating(value.vote_average)
                        }
                       id={value.id}
                       cat={this.props.cat}
@@ -68,6 +66,7 @@ class RowPosters extends Component{
                          ? value.profile_path
                          : value.poster_path
                        }
+                       altAttr={cat === movie ? value.title : value.name}
                     />
                   )
                 }

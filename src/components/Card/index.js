@@ -74,7 +74,7 @@
                       this.props.createdBy && this.props.createdBy.map((value, elem) => {
                         if ( elem <= 4 ) {
                           return (
-                            <span className="itemList">{value.name}</span>
+                            <span key={elem} className="itemList">{value.name}</span>
                           )
                         }
                       })
@@ -100,7 +100,7 @@
                     this.props.genres && this.props.genres.map((value, elem) => {
                       if ( elem <= 4 ) {
                         return (
-                          <span className="itemList">{value.name}</span>
+                          <span key={elem} className="itemList">{value.name}</span>
                         )
                       }
                     })
