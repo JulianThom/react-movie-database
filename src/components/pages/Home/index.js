@@ -13,16 +13,24 @@ const {
   apiKey
 } = config.tmdb;
 
+const {
+  movie,
+  tv,
+  person
+} = config.categories;
+
 class Home extends Component{
 
   state = {
     loading: true,
     dataMovie: [],
     dataTV: [],
-    dataPerson: []
+    dataPerson: [],
+    contentToDisplay: 18
   };
 
   componentDidMount() {
+
     const bestMovies =
     axios.get(`
         ${baseUrlApi}discover/movie?api_key=${apiKey}&language=en-US
@@ -75,11 +83,29 @@ class Home extends Component{
 
   render () {
 
-    const {
-      movie,
-      tv,
-      person
-    } = config.categories;
+    const rowPostersPopulate = [
+      {
+        title: 'Best movies of 2017',
+        icon: config.icons.movie,
+        display: this.state.contentToDisplay,
+        cat: movie,
+        data: (!this.state.loading ? this.state.dataMovie : [])
+      },
+      {
+        title: 'Best series of 2017',
+        icon: config.icons.tv,
+        display: this.state.contentToDisplay,
+        cat: tv,
+        data: (!this.state.loading ? this.state.dataTV : [])
+      },
+      {
+        title: 'Most popular actor',
+        icon: config.icons.person,
+        display: this.state.contentToDisplay,
+        cat: person,
+        data: (!this.state.loading ? this.state.dataPerson : [])
+      }
+    ]
 
     return (
       <div>
@@ -88,27 +114,19 @@ class Home extends Component{
         }
         <MainLayout slideshow='true' slideshowCat={movie}>
           <div className="wrapperRow">
-            <RowPosters
-              icon={config.icons.movie}
-              title="Best movies of 2017"
-              contentToDisplay={18}
-              cat={movie}
-              data={this.state.dataMovie}
-            />
-            <RowPosters
-              icon={config.icons.tv}
-              title="Best series of 2017"
-              contentToDisplay={18}
-              cat={tv}
-              data={this.state.dataTV}
-            />
-            <RowPosters
-              icon={config.icons.person}
-              title="Most popular actors"
-              contentToDisplay={18}
-              cat={person}
-              data={this.state.dataPerson}
-            />
+            {
+              rowPostersPopulate.map((value, elem) => {
+                return (
+                  <RowPosters
+                    icon={value.icon}
+                    title={value.title}
+                    contentToDisplay={value.display}
+                    cat={value.cat}
+                    data={value.data}
+                  />
+                )
+              })
+            }
           </div>
         </MainLayout>
       </div>
