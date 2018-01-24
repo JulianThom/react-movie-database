@@ -12,7 +12,6 @@ import Card from '../../../components/Card/'
 import axios from 'axios';
 import YouTube from 'react-youtube';
 import disableScroll from 'disable-scroll';
-var Rating = require('react-rating');
 
 const {
   baseUrlApi,
@@ -26,8 +25,6 @@ const {
 
 const {
   movie,
-  tv,
-  person
 } = config.categories;
 
 class Detail extends Component{
