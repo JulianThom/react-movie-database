@@ -43,7 +43,7 @@ class RowPosters extends Component{
           <div className="containerPoster">
             {
               cat === `${movie}` &&
-              data.map(function(value, elem) {
+              data.map((value, elem) => {
                 if ( elem < contentToDisplay ) {
                   return (
                     <Poster
@@ -63,35 +63,39 @@ class RowPosters extends Component{
             }
             {
               cat === `${tv}` &&
-              data.slice(0, contentToDisplay).map(function(value, elem) {
-                return (
-                  <Poster
-                    key={elem}
-                    icon="star"
-                    posterURL={`${baseUrlPosterW342}${value.poster_path}`}
-                    rating={true}
-                    value={rating(value.vote_average)}
-                    id={value.id}
-                    cat={tv}
-                    imageStatus={value.poster_path}
-                  />
-                )
+              data.slice(0, contentToDisplay).map((value, elem) => {
+                if ( elem < contentToDisplay ) {
+                  return (
+                    <Poster
+                      key={elem}
+                      icon="star"
+                      posterURL={`${baseUrlPosterW342}${value.poster_path}`}
+                      rating={true}
+                      value={rating(value.vote_average)}
+                      id={value.id}
+                      cat={tv}
+                      imageStatus={value.poster_path}
+                    />
+                  )
+                }
               })
             }
             {
               cat === `${person}` &&
-              data.slice(0, contentToDisplay).map(function(value, elem) {
-                return (
-                  <Poster
-                    key={elem}
-                    posterURL={`${baseUrlProfileW185}${value.profile_path}`}
-                    value={value.name}
-                    rating={false}
-                    id={value.id}
-                    cat={person}
-                    imageStatus={value.profile_path}
-                  />
-                )
+              data.slice(0, contentToDisplay).map((value, elem) => {
+                if ( elem < contentToDisplay ) {
+                  return (
+                    <Poster
+                      key={elem}
+                      posterURL={`${baseUrlProfileW185}${value.profile_path}`}
+                      value={value.name}
+                      rating={false}
+                      id={value.id}
+                      cat={person}
+                      imageStatus={value.profile_path}
+                    />
+                  )
+                }
               })
             }
           </div>

@@ -16,7 +16,7 @@ class RowReviews extends Component{
           title="Reviews"
         />
         {
-          this.props.data.map(function(value, elem) {
+          this.props.data.map((value, elem) => {
             return (
               <Review
                 key={elem}

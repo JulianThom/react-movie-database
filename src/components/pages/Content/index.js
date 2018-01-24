@@ -127,7 +127,7 @@ class Content extends Component{
                 onChange={this.handleChange}
               >
                 {
-                  Object.keys(sortByConfig).map(function(keyName, keyIndex) {
+                  Object.keys(sortByConfig).map((keyName, keyIndex) => {
                     return <option key={keyIndex} value={keyName}>{sortByConfig[keyName]}</option>
                   })
                 }

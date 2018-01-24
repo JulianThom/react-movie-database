@@ -71,7 +71,7 @@
                   <ItemMeta
                     labelText="Created By "
                     labelValue={
-                      this.props.createdBy && this.props.createdBy.map(function(value, elem) {
+                      this.props.createdBy && this.props.createdBy.map((value, elem) => {
                         if ( elem <= 4 ) {
                           return (
                             <span className="itemList">{value.name}</span>
@@ -97,7 +97,7 @@
                 <ItemMeta
                   labelText="Genre "
                   labelValue={
-                    this.props.genres && this.props.genres.map(function(value, elem) {
+                    this.props.genres && this.props.genres.map((value, elem) => {
                       if ( elem <= 4 ) {
                         return (
                           <span className="itemList">{value.name}</span>
