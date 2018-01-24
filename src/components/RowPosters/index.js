@@ -12,8 +12,6 @@ class RowPosters extends Component{
   render () {
 
     const {
-      movie,
-      tv,
       person
     } = config.categories;
 
