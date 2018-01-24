@@ -4,13 +4,15 @@ import './index.css';
 import RowTitle from '../RowTitle/'
 import Review from '../Review/'
 
+import config from '../../config'
+
 class RowReviews extends Component{
 
   render () {
     return (
       <div className="rows">
         <RowTitle
-          icon="commenting"
+          icon={config.icons.review}
           title="Reviews"
         />
         {

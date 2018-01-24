@@ -197,7 +197,7 @@ class Detail extends Component{
           this.state.showTrailer && this.state.hasTrailer &&
           <div className="trailer">
             <i
-              className="fa fa-window-close fa-2x iconClose pull-right"
+              className={`${config.icons.close} fa-2x iconClose pull-right`}
               onClick={this.onClickCloseTrailer}
               >
             </i>
@@ -240,7 +240,7 @@ class Detail extends Component{
             {
               !!seasons &&
               <RowPosters
-                icon="file-video-o"
+                icon={config.icons.season}
                 title="Seasons"
                 contentToDisplay={seasons.length}
                 cat={this.state.routeCat}
@@ -250,7 +250,7 @@ class Detail extends Component{
             {
               this.state.cast.length >= 1 &&
               <RowPosters
-                icon="user"
+                icon={config.icons.person}
                 title="Cast"
                 contentToDisplay={6}
                 cat={config.categories.person}
@@ -260,7 +260,7 @@ class Detail extends Component{
             {
               this.state.similar.length >= 1 &&
               <RowPosters
-                icon="chain"
+                icon={config.icons.similar}
                 title="Similars"
                 contentToDisplay={6}
                 cat={this.state.routeCat}

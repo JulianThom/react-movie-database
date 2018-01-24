@@ -15,6 +15,12 @@
         person
       } = config.categories;
 
+      const {
+        play,
+        ratingFilled,
+        ratingEmpty
+      } = config.icons;
+
       return (
         <div className="wrapperCard">
           <div className="poster">
@@ -31,7 +37,7 @@
               {
                 this.props.hasTrailer &&
                 <i
-                  className="iconPlay fa fa-play-circle fa-5x">
+                  className={`iconPlay ${play} fa-5x`}>
                 </i>
               }
             </a>
@@ -42,8 +48,8 @@
             </div>
             <Rating
               initialRate={this.props.rating}
-              empty="fa fa-star-o"
-              full="fa fa-star"
+              empty={ratingEmpty}
+              full={ratingEmpty}
               readonly
               className="ratingDetail"
               />

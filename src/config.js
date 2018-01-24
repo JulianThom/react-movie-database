@@ -37,5 +37,21 @@ export default {
         autoplay: 1
       }
     }
+  },
+  icons: {
+    play: 'fa fa-play-circle',
+    close: 'fa fa-window-close',
+    season: 'fa fa-file-video-o',
+    person: 'fa fa-user',
+    similar: 'fa fa-chain',
+    movie: 'fa fa-ticket',
+    tv: 'fa fa-television',
+    ratingFilled: 'fa fa-star',
+    ratingEmpty: 'fa fa-star-o',
+    review: 'fa fa-commenting',
+    sortDesc: 'fa fa-sort-amount-desc',
+    sortAsc: 'fa fa-sort-amount-asc',
+    spinner: 'fa fa-spinner fa-pulse fa-5x fa-fw '
+
   }
 }

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import './index.css';
+
+import config from '../../config'
+
 var Rating = require('react-rating');
 
 class PosterInfo extends Component{
@@ -11,8 +14,8 @@ class PosterInfo extends Component{
           this.props.rating ?
           <Rating
             initialRate={this.props.value}
-            empty="fa fa-star-o"
-            full="fa fa-star"
+            empty={config.icons.ratingEmpty}
+            full={config.icons.ratingFilled}
             readonly
           />
           : this.props.value

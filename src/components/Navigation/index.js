@@ -10,7 +10,9 @@ import './index.css';
 import config from '../../config'
 
 class Navigation extends Component {
+
   render() {
+
     const {
       movie,
       tv,
@@ -35,7 +37,7 @@ class Navigation extends Component {
                   activeClassName="active"
                   to={`/${movie}/allmovies`}
                 >
-                  <i className="fa fa-ticket"></i> Movies
+                  <i className={config.icons.movie}></i> Movies
                 </NavLink>
               </li>
               <li>
@@ -43,7 +45,7 @@ class Navigation extends Component {
                   activeClassName="active"
                   to={`/${tv}/allseries`}
                 >
-                  <i className="fa fa-television"></i> Series
+                  <i className={config.icons.tv}></i> Series
                 </NavLink>
               </li>
               <li>
@@ -51,7 +53,7 @@ class Navigation extends Component {
                   activeClassName="active"
                   to={`/${person}`}
                 >
-                  <i className="fa fa-user"></i> Actors
+                  <i className={config.icons.person}></i> Actors
                 </NavLink>
               </li>
             </ul>

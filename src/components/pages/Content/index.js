@@ -150,7 +150,7 @@ class Content extends Component{
                 }
                 onClick={() => this.handleSort('desc')}
                 >
-                  <i className="fa fa-sort-amount-desc">
+                  <i className={config.icons.sortDesc}>
                   </i> Desc
               </button>
               <button
@@ -171,7 +171,7 @@ class Content extends Component{
                 }
                 onClick={() => this.handleSort('asc')}
                 >
-                  <i className="fa fa-sort-amount-asc">
+                  <i className={config.icons.sortAsc}>
                   </i> Asc
               </button>
             </div>
