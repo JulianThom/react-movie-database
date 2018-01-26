@@ -13,6 +13,7 @@ class RowPosters extends Component{
 
     const {
       movie,
+      tv,
       person
     } = config.categories;
 
@@ -26,7 +27,8 @@ class RowPosters extends Component{
       title,
       contentToDisplay,
       cat,
-      data
+      data,
+      type
     } = this.props;
 
     return (
@@ -56,8 +58,14 @@ class RowPosters extends Component{
                          : `${baseUrlPosterW342}${value.poster_path}`
                        }
                       rate={value.vote_average}
-                      rating={cat === person ? false : true}
-                      value={cat === person ? value.name : rating(value.vote_average)
+                      rating={cat === person || cat === config.types.season ? false : true}
+                      value={
+                        cat === person ? value.name :
+                        (
+                          cat === config.types.season
+                          ? `Season ${value.season_number}`
+                          : rating(value.vote_average)
+                        )
                        }
                       id={value.id}
                       cat={this.props.cat}

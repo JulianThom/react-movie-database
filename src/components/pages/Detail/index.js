@@ -27,6 +27,10 @@ const {
   movie,
 } = config.categories;
 
+const {
+  season,
+} = config.types;
+
 class Detail extends Component{
 
   state = {
@@ -241,7 +245,7 @@ class Detail extends Component{
                 icon={config.icons.season}
                 title="Seasons"
                 contentToDisplay={seasons.length}
-                cat={this.state.routeCat}
+                cat={config.types.season}
                 data={seasons}
               />
             }
