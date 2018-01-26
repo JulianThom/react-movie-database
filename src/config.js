@@ -4,6 +4,10 @@ export default {
     person: 'person',
     movie: 'movie'
   },
+  types: {
+    season: 'season',
+    episode: 'episode'
+  },
   tmdb: {
     apiKey: 'a8ccc2c614a1931b007aa9a92c8afb41',
     baseUrlApi: 'https://api.themoviedb.org/3/',
@@ -41,8 +45,8 @@ export default {
   icons: {
     play: 'fa fa-play-circle',
     close: 'fa fa-window-close',
-    season: 'fa fa-file-video-o',
-    person: 'fa fa-user',
+    season: 'fa fa-folder-open',
+    person: 'fa fa-user-circle',
     similar: 'fa fa-chain',
     movie: 'fa fa-ticket',
     tv: 'fa fa-television',
