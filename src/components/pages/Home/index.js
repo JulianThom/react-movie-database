@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux'
 import './index.css';
 
 import RowPosters from '../../../components/RowPosters/'
@@ -7,6 +9,8 @@ import MainLayout from '../../../components/layouts/MainLayout/'
 
 import axios from 'axios';
 import config from '../../../config'
+
+import { addMovies } from '../../../index'
 
 const {
   baseUrlApi,
@@ -31,7 +35,7 @@ class Home extends Component{
 
   componentDidMount() {
 
-    const bestMovies =
+    const getBestMovies =
     axios.get(`
         ${baseUrlApi}discover/movie?api_key=${apiKey}&language=en-US
         &sort_by=vote_average.desc&include_adult=false&include_video=false&page=1
@@ -46,7 +50,7 @@ class Home extends Component{
       console.log(error);
     })
 
-    const bestTvs =
+    const getBestTvs =
     axios.get(`
       ${baseUrlApi}discover/tv?api_key=${apiKey}&language=en-US
       &sort_by=vote_average.desc&first_air_date_year=2017&page=1&timezone=America
@@ -61,7 +65,7 @@ class Home extends Component{
       console.log(error);
     })
 
-    const bestPersons =
+    const getBestPersons =
     axios.get(`
       ${baseUrlApi}person/popular?api_key=${apiKey}&language=en-US&page=1
     `)
@@ -74,11 +78,21 @@ class Home extends Component{
       console.log(error);
     })
 
-    Promise.all([bestMovies, bestTvs, bestPersons]).then(() => {
+    Promise.all([getBestMovies, getBestTvs, getBestPersons]).then(() => {
       this.setState({
         loading: false
       })
     })
+  }
+
+  handleClickAddMovies = () => {
+    // console.log('addMovies')
+    this.props.addMovies(['James bond', 'The big short', 'Brice de Nice 3'])
+  }
+
+  handleClickAddOtherMovies = () => {
+    // console.log('addMovies')
+    this.props.addMovies(['Seven', 'lalaland', 'Super size me'])
   }
 
   render () {
@@ -112,7 +126,11 @@ class Home extends Component{
         {
           this.state.loading && <Spinner />
         }
+
         <MainLayout slideshow='true' slideshowCat={movie}>
+          <button onClick={ this.handleClickAddMovies }>add Movies</button>
+          <button onClick={ this.handleClickAddOtherMovies }>add other Movies</button>
+          { this.props.movies.map((movie) =>  <div>{ movie } </div> )}
           <div className="wrapperRow">
             {
               rowPostersPopulate.map((value, elem) => {
@@ -135,4 +153,17 @@ class Home extends Component{
   }
 }
 
-export default Home;
+
+const mapStateToProps = (state) => {
+  return {
+    movies: state.movies
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addMovies: bindActionCreators(addMovies, dispatch),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
