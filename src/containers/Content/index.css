@@ -1,0 +1,15 @@
+.wrapperPagination {
+  text-align: center;
+}
+
+.wrapperPagination .pagination>li>a, .wrapperPagination .pagination>li>span {
+  cursor: pointer;
+}
+
+.selectFilter {
+  margin-bottom: 20px
+}
+
+.selectFilter button {
+  margin-left: 10px;
+}
